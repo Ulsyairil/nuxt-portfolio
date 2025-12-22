@@ -3,7 +3,7 @@ import { site } from './../data/site'
 
 type SkillLevel = 'Beginner' | 'Amateur' | 'Intermediate' | 'Advanced'
 
-const levelClass = (level: SkillLevel) => {
+const levelClass = (level: string | SkillLevel) => {
   switch (level) {
     case 'Advanced':
       return 'border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-200'

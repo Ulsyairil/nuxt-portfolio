@@ -4,11 +4,11 @@ import { site } from './../data/site'
 
 <template>
   <section id="about" class="section" data-aos="fade-right">
+    <div class="hero-bg" aria-hidden="true"></div>
+    
     <div class="container-base">
       <SectionHeading title="About" subtitle="A little bit about me." />
 
-      <!-- Outer card: ensure readable background/border in light + dark -->
-      <!-- Outer card -->
       <div class="rounded-2xl border border-slate-900/10 bg-white/70 p-6 backdrop-blur md:p-8
          dark:border-white/10 dark:bg-white/5">
         <div class="space-y-4 text-slate-900 dark:text-white">
@@ -48,7 +48,6 @@ import { site } from './../data/site'
         </div>
 
         <div class="mt-6 grid gap-4 md:grid-cols-3">
-          <!-- Stat cards (keep yours as-is or update text slightly) -->
           <div class="rounded-2xl border border-slate-900/10 bg-white/70 p-4 backdrop-blur
              dark:border-white/10 dark:bg-white/5">
             <p class="text-sm text-slate-600 dark:text-slate-300">Focus</p>

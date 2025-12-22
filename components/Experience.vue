@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { site } from './../data/site'
+import AOS from 'aos'
 
 const openIdx = ref<number | null>(0)
 
-const toggle = (idx: number) => {
+const refreshAOS = async () => {
+  await nextTick()
+
+  requestAnimationFrame(() => {
+    AOS.refreshHard()
+  })
+}
+
+const toggle = async (idx: number) => {
   openIdx.value = openIdx.value === idx ? null : idx
+  await refreshAOS()
 }
 
 const onEnter = (el: Element) => {
@@ -19,11 +29,12 @@ const onEnter = (el: Element) => {
   e.style.opacity = '1'
 }
 
-const onAfterEnter = (el: Element) => {
+const onAfterEnter = async (el: Element) => {
   const e = el as HTMLElement
   e.style.height = 'auto'
   e.style.overflow = 'visible'
   e.style.transition = ''
+  await refreshAOS()
 }
 
 const onLeave = (el: Element) => {
@@ -37,12 +48,13 @@ const onLeave = (el: Element) => {
   e.style.opacity = '0'
 }
 
-const onAfterLeave = (el: Element) => {
+const onAfterLeave = async (el: Element) => {
   const e = el as HTMLElement
   e.style.transition = ''
   e.style.height = ''
   e.style.opacity = ''
   e.style.overflow = ''
+  await refreshAOS()
 }
 </script>
 
@@ -52,17 +64,9 @@ const onAfterLeave = (el: Element) => {
       <SectionHeading title="Experience" subtitle="Where I have worked." />
 
       <div class="grid gap-4">
-        <article
-          v-for="(exp, idx) in site.experience"
-          :key="idx"
-          class="card p-0 overflow-hidden"
-        >
-          <button
-            type="button"
-            class="w-full p-6 md:p-7 text-left flex items-start justify-between gap-4
-                   hover:bg-slate-900/5 dark:hover:bg-white/5 transition"
-            @click="toggle(idx)"
-          >
+        <article v-for="(exp, idx) in site.experience" :key="idx" class="card p-0 overflow-hidden">
+          <button type="button" class="w-full p-6 md:p-7 text-left flex items-start justify-between gap-4
+                   hover:bg-slate-900/5 dark:hover:bg-white/5 transition" @click="toggle(idx)">
             <div class="min-w-0">
               <p class="text-lg font-bold text-slate-900 dark:text-white truncate">
                 {{ exp.company }}
@@ -75,28 +79,16 @@ const onAfterLeave = (el: Element) => {
               </p>
             </div>
 
-            <span
-              class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-xl border
+            <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-xl border
                      border-slate-900/10 bg-white/70 text-slate-600 backdrop-blur
                      dark:border-white/10 dark:bg-white/5 dark:text-slate-200
-                     transition"
-              :class="{ 'rotate-180': openIdx === idx }"
-              aria-hidden="true"
-            >
+                     transition" :class="{ 'rotate-180': openIdx === idx }" aria-hidden="true">
               ^
             </span>
           </button>
 
-          <Transition
-            @enter="onEnter"
-            @after-enter="onAfterEnter"
-            @leave="onLeave"
-            @after-leave="onAfterLeave"
-          >
-            <div
-              v-show="openIdx === idx"
-              class="border-t border-slate-900/10 dark:border-white/10"
-            >
+          <Transition @enter="onEnter" @after-enter="onAfterEnter" @leave="onLeave" @after-leave="onAfterLeave">
+            <div v-show="openIdx === idx" class="border-t border-slate-900/10 dark:border-white/10">
               <div class="px-6 pb-6 pt-5 md:px-7 md:pb-7">
                 <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
                   {{ exp.summary }}

@@ -7,7 +7,7 @@ import { site } from './../data/site'
     <div class="container-base">
       <SectionHeading title="Certificates" subtitle="Selected certifications and training." />
 
-      <div class="grid gap-4 md:grid-cols-2">
+      <div class="grid gap-4 md:grid-cols-3">
         <article v-for="(c, idx) in site.certificates" :key="idx"
           class="card p-6 transition hover:-translate-y-0.5 hover:shadow-md">
           <div class="flex items-center gap-4">
@@ -34,6 +34,7 @@ import { site } from './../data/site'
           <div class="mt-4">
             <a v-if="c.proof" class="btn w-fit" :href="c.proof" target="_blank" rel="noreferrer">
               View Proof
+              <i class="fa fa-external-link"></i>
             </a>
 
             <p v-else class="text-xs text-slate-500 dark:text-slate-400">
