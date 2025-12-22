@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Color system (edit these to match your work) ===== */
+:root{
+  --bg: 255 255 255;       /* page background */
+  --panel: 248 250 252;    /* cards/panels */
+  --text: 15 23 42;        /* primary text (slate-900) */
+  --muted: 71 85 105;      /* secondary text (slate-600) */
+
+  --primary: 99 102 241;
+  --primary-2: 56 189 248;
+  --ring: 99 102 241;
+}
+
+/* Dark mode overrides (Nuxt color-mode adds .dark on <html>) */
+.dark{
+  --bg: 10 12 16;
+  --panel: 14 17 24;
+  --text: 236 240 247;
+  --muted: 165 174 190;
+
+  --primary: 99 102 241;
+  --primary-2: 56 189 248;
+  --ring: 99 102 241;
+}
+
+html { scroll-behavior: smooth; }
+body { background: rgb(var(--bg)); color: rgb(var(--text)); }
+
+@layer components {
+  .container-base { @apply mx-auto w-full max-w-6xl px-4; }
+
+  /* Card: light has shadow, dark stays "glass" */
+  .card {
+    @apply rounded-2xl border backdrop-blur;
+    @apply border-slate-900/10 bg-white/70 shadow-sm shadow-slate-900/10; /* light */
+    @apply dark:border-white/10 dark:bg-white/5 dark:shadow-none;         /* dark */
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold
+           border transition;
+    @apply border-slate-900/10 bg-slate-900/5 hover:bg-slate-900/10;      /* light */
+    @apply dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10;   /* dark */
+  }
+
+  .btn-primary {
+    @apply border-transparent;
+    background: linear-gradient(135deg, rgb(var(--primary)), rgb(var(--primary-2)));
+  }
+
+  .muted { color: rgb(var(--muted)); }
+
+  .chip { @apply rounded-full border border-slate-900/10 bg-slate-900/5 px-3 py-1 text-xs
+                 dark:border-white/10 dark:bg-white/5; }
+
+  .section { @apply py-16 md:py-20; }
+}
