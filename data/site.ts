@@ -2,22 +2,39 @@ export type Project = {
   title: string
   description: string
   stack: string[]
-  links?: { label: string; href: string }[]
+  links: {
+    label: string
+    href: string
+  }[]
   image?: string
 }
 
 export type Experience = {
-  role: string
   company: string
   location: string
+  type: string
   period: string
-  bullets: string[]
+  summary: string
+  roles: {
+    title: string
+    period: string
+    duration?: string
+    description: string
+    sections?: {
+      title: string
+      items: {
+        text: string
+        sub?: string[]
+      }[]
+    }[]
+  }[]
 }
 
 export type Certificate = {
   title: string
   issuer: string
   proof?: string
+  image?: string
 }
 
 export const site = {
