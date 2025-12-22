@@ -35,6 +35,7 @@ export type Certificate = {
   issuer: string
   proof?: string
   image?: string
+  imageAlt?: string
 }
 
 export const site = {
