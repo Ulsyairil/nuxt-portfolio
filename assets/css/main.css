@@ -2,59 +2,184 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== Color system (edit these to match your work) ===== */
-:root{
-  --bg: 255 255 255;       /* page background */
-  --panel: 248 250 252;    /* cards/panels */
-  --text: 15 23 42;        /* primary text (slate-900) */
-  --muted: 71 85 105;      /* secondary text (slate-600) */
-
-  --primary: 99 102 241;
-  --primary-2: 56 189 248;
-  --ring: 99 102 241;
+:root {
+  --bg: 246 244 238;
+  --surface: 255 255 255;
+  --surface-strong: 232 229 220;
+  --text: 31 31 29;
+  --muted: 87 87 82;
+  --line: 31 31 29;
+  --lime: 98 125 0;
+  --lime-bright: 200 255 0;
+  --coral: 202 55 65;
 }
 
-/* Dark mode overrides (Nuxt color-mode adds .dark on <html>) */
-.dark{
-  --bg: 10 12 16;
-  --panel: 14 17 24;
-  --text: 236 240 247;
-  --muted: 165 174 190;
-
-  --primary: 99 102 241;
-  --primary-2: 56 189 248;
-  --ring: 99 102 241;
+.dark {
+  --bg: 31 31 31;
+  --surface: 65 65 65;
+  --surface-strong: 73 73 73;
+  --text: 243 241 239;
+  --muted: 209 206 203;
+  --line: 243 241 239;
+  --lime: 200 255 0;
+  --lime-bright: 200 255 0;
+  --coral: 255 92 99;
 }
 
-html { scroll-behavior: smooth; }
-body { background: rgb(var(--bg)); color: rgb(var(--text)); }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html.dark { color-scheme: dark; }
+
+body {
+  min-width: 320px;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: inherit;
+  text-rendering: optimizeLegibility;
+}
+
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity .65s ease var(--reveal-delay, 0ms),
+    transform .65s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.reveal-ready [data-reveal="left"] {
+  transform: translate3d(-22px, 0, 0);
+}
+
+html.reveal-ready [data-reveal="right"] {
+  transform: translate3d(22px, 0, 0);
+}
+
+html.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgb(var(--lime-bright));
+  color: #111;
+}
 
 @layer components {
-  .container-base { @apply mx-auto w-full max-w-6xl px-4; }
+  .container-base { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
+  .section { @apply border-t py-20 md:py-28; border-color: rgb(var(--line) / .14); }
 
-  /* Card: light has shadow, dark stays "glass" */
-  .card {
-    @apply rounded-2xl border backdrop-blur;
-    @apply border-slate-900/10 bg-white/70 shadow-sm shadow-slate-900/10; /* light */
-    @apply dark:border-white/10 dark:bg-white/5 dark:shadow-none;         /* dark */
+  .editorial-title {
+    @apply text-4xl font-semibold tracking-tight md:text-6xl;
+    font-family: inherit;
   }
 
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold
-           border transition;
-    @apply border-slate-900/10 bg-slate-900/5 hover:bg-slate-900/10;      /* light */
-    @apply dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10;   /* dark */
-  }
-
-  .btn-primary {
-    @apply border-transparent;
-    background: linear-gradient(135deg, rgb(var(--primary)), rgb(var(--primary-2)));
+  .mono-heading {
+    font-family: inherit;
   }
 
   .muted { color: rgb(var(--muted)); }
+  .nav-link:hover { color: rgb(var(--lime)); }
+  .accent-coral { color: rgb(var(--coral)); }
+  .accent-lime { color: rgb(var(--lime)); }
 
-  .chip { @apply rounded-full border border-slate-900/10 bg-slate-900/5 px-3 py-1 text-xs
-                 dark:border-white/10 dark:bg-white/5; }
+  .panel {
+    @apply border;
+    border-color: rgb(var(--line) / .2);
+    background: rgb(var(--surface));
+  }
 
-  .section { @apply py-16 md:py-20; }
+  .panel-muted { background: rgb(var(--surface-strong)); }
+
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 border px-5 py-2.5 text-sm font-bold transition;
+    border-color: rgb(var(--line) / .3);
+    color: rgb(var(--text));
+    background: transparent;
+  }
+
+  .btn:hover {
+    border-color: rgb(var(--lime));
+    color: rgb(var(--lime));
+  }
+
+  .btn-primary {
+    border-color: rgb(var(--lime-bright));
+    background: rgb(var(--lime-bright));
+    color: #151515;
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: rgb(var(--lime));
+  }
+
+  .tag {
+    @apply inline-flex items-center border px-3 py-1 text-xs font-bold uppercase tracking-wide;
+    border-color: rgb(var(--lime));
+    color: rgb(var(--lime));
+  }
+
+  .tag-solid {
+    @apply inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-wide;
+    background: rgb(var(--lime));
+    color: #151515;
+  }
+
+  .control-select {
+    @apply h-10 appearance-none border bg-transparent py-0 pl-3 pr-9 text-sm font-bold outline-none transition;
+    border-color: rgb(var(--line) / .25);
+    color: rgb(var(--text));
+  }
+
+  .control-select:hover,
+  .control-select:focus { border-color: rgb(var(--lime)); }
+
+  .image-placeholder {
+    @apply grid min-h-64 place-items-center border text-center;
+    border-color: rgb(var(--line) / .2);
+    color: rgb(var(--muted));
+    background:
+      linear-gradient(135deg, transparent 49.7%, rgb(var(--line) / .08) 50%, transparent 50.3%),
+      rgb(var(--surface));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  html.reveal-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html.reveal-ready [data-reveal],
+  html.reveal-ready [data-reveal="left"],
+  html.reveal-ready [data-reveal="right"] {
+    transform: translate3d(0, 12px, 0);
+    transition-duration: .45s;
+  }
+
+  html.reveal-ready [data-reveal].is-visible {
+    transform: translate3d(0, 0, 0);
+  }
 }

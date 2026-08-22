@@ -1,6 +1,21 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', "nuxt-aos"],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
   css: ["~/assets/css/main.css"],
+  runtimeConfig: {
+    portfolioPdf: {
+      siteUrl: "",
+      vercelBypassSecret: "",
+    },
+  },
+  nitro: {
+    vercel: {
+      functions: {
+        runtime: "nodejs22.x",
+        memory: 2048,
+        maxDuration: 60,
+      },
+    },
+  },
   colorMode: {
     preference: "system",
     fallback: "light",

@@ -1,136 +1,60 @@
 <script setup lang="ts">
-import { ref, nextTick } from 'vue'
-import { site } from './../data/site'
-import AOS from 'aos'
+import { computed } from 'vue'
 
-const openIdx = ref<number | null>(0)
-
-const refreshAOS = async () => {
-  await nextTick()
-
-  requestAnimationFrame(() => {
-    AOS.refreshHard()
-  })
-}
-
-const toggle = async (idx: number) => {
-  openIdx.value = openIdx.value === idx ? null : idx
-  await refreshAOS()
-}
-
-const onEnter = (el: Element) => {
-  const e = el as HTMLElement
-  e.style.height = '0'
-  e.style.opacity = '0'
-  e.style.overflow = 'hidden'
-  void e.offsetHeight
-  e.style.transition = 'height 260ms ease, opacity 180ms ease'
-  e.style.height = e.scrollHeight + 'px'
-  e.style.opacity = '1'
-}
-
-const onAfterEnter = async (el: Element) => {
-  const e = el as HTMLElement
-  e.style.height = 'auto'
-  e.style.overflow = 'visible'
-  e.style.transition = ''
-  await refreshAOS()
-}
-
-const onLeave = (el: Element) => {
-  const e = el as HTMLElement
-  e.style.height = e.scrollHeight + 'px'
-  e.style.opacity = '1'
-  e.style.overflow = 'hidden'
-  void e.offsetHeight
-  e.style.transition = 'height 240ms ease, opacity 160ms ease'
-  e.style.height = '0'
-  e.style.opacity = '0'
-}
-
-const onAfterLeave = async (el: Element) => {
-  const e = el as HTMLElement
-  e.style.transition = ''
-  e.style.height = ''
-  e.style.opacity = ''
-  e.style.overflow = ''
-  await refreshAOS()
-}
+const { site, copy } = usePortfolio()
+const featured = computed(() => site.value.experience.slice(0, 3))
 </script>
 
 <template>
-  <section id="experience" class="section" data-aos="fade-down">
+  <section id="experience" class="section">
     <div class="container-base">
-      <SectionHeading title="Experience" subtitle="Where I have worked." />
+      <SectionHeading :title="copy.experience.title" :subtitle="copy.experience.subtitle" />
 
-      <div class="grid gap-4">
-        <article v-for="(exp, idx) in site.experience" :key="idx" class="card p-0 overflow-hidden">
-          <button type="button" class="w-full p-6 md:p-7 text-left flex items-start justify-between gap-4
-                   hover:bg-slate-900/5 dark:hover:bg-white/5 transition" @click="toggle(idx)">
-            <div class="min-w-0">
-              <p class="text-lg font-bold text-slate-900 dark:text-white truncate">
-                {{ exp.company }}
-              </p>
-              <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                {{ exp.type }} · {{ exp.period }}
-              </p>
-              <p class="text-sm text-slate-600 dark:text-slate-300">
-                {{ exp.location }}
-              </p>
+      <p class="tag mb-7">{{ copy.experience.overview }}</p>
+      <div class="grid gap-1 md:grid-cols-3">
+        <article v-for="(exp, index) in featured" :key="exp.company" class="panel p-7" :class="index === 0 ? 'panel-muted' : ''" data-reveal :data-reveal-delay="index * 80">
+          <span class="mono-heading text-4xl font-bold accent-lime">0{{ index + 1 }}</span>
+          <p class="mono-heading mt-7 text-lg font-bold">{{ exp.period }}</p>
+          <h3 class="mt-3 text-xl font-bold">{{ exp.company }}</h3>
+          <p class="muted mt-2 text-sm">{{ exp.roles[0]?.title }} · {{ exp.location }}</p>
+        </article>
+      </div>
+
+      <p class="tag mt-20">{{ copy.experience.details }}</p>
+      <div class="mt-7 space-y-20">
+        <article v-for="(exp, index) in featured" :key="`${exp.company}-detail`" class="grid items-stretch gap-8 lg:grid-cols-2" :data-reveal="index % 2 === 0 ? 'right' : 'left'">
+          <div class="p-1 lg:p-8" :class="{ 'lg:order-2': index % 2 === 1 }">
+            <p class="mono-heading text-sm font-bold uppercase accent-lime">{{ exp.company }}</p>
+            <h3 class="mono-heading mt-4 text-4xl font-bold">{{ exp.roles[0]?.title }}</h3>
+            <p class="muted mt-3">{{ exp.period }} · {{ exp.location }}</p>
+            <p class="mt-7 text-lg leading-8">{{ exp.summary }}</p>
+
+            <div v-for="section in exp.roles[0]?.sections" :key="section.title" class="mt-8">
+              <h4 class="mono-heading text-lg font-bold">{{ copy.experience.responsibilities }}</h4>
+              <ul class="mt-5 space-y-5">
+                <li v-for="item in section.items" :key="item.text" class="border-l-4 pl-5" style="border-color: rgb(var(--lime))">
+                  <p class="font-bold">{{ item.text }}</p>
+                  <p v-for="sub in item.sub" :key="sub" class="muted mt-1 text-sm leading-6">{{ sub }}</p>
+                </li>
+              </ul>
             </div>
+          </div>
 
-            <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-xl border
-                     border-slate-900/10 bg-white/70 text-slate-600 backdrop-blur
-                     dark:border-white/10 dark:bg-white/5 dark:text-slate-200
-                     transition" :class="{ 'rotate-180': openIdx === idx }" aria-hidden="true">
-              ^
-            </span>
-          </button>
-
-          <Transition @enter="onEnter" @after-enter="onAfterEnter" @leave="onLeave" @after-leave="onAfterLeave">
-            <div v-show="openIdx === idx" class="border-t border-slate-900/10 dark:border-white/10">
-              <div class="px-6 pb-6 pt-5 md:px-7 md:pb-7">
-                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  {{ exp.summary }}
-                </p>
-
-                <!-- Roles (your existing role layout fits here) -->
-                <div v-for="(role, rIdx) in exp.roles" :key="rIdx" class="mt-6 card p-6">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 class="text-lg font-bold text-slate-900 dark:text-white">
-                        {{ role.title }}
-                      </h3>
-                      <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-                        {{ role.period }} · {{ role.duration }}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {{ role.description }}
-                  </p>
-
-                  <div v-for="(sec, sIdx) in role.sections" :key="sIdx" class="mt-6">
-                    <p class="text-sm font-semibold text-slate-900 dark:text-white">
-                      {{ sec.title }}
-                    </p>
-
-                    <ul class="mt-3 space-y-3 text-slate-600 dark:text-slate-300">
-                      <li v-for="(it, iIdx) in sec.items" :key="iIdx">
-                        <p class="font-medium text-slate-900 dark:text-white">{{ it.text }}</p>
-                        <ul v-if="it.sub?.length" class="mt-1 space-y-1 pl-4 text-sm">
-                          <li v-for="(s, si) in it.sub" :key="si">
-                            ⇒ {{ s }}
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+          <img
+            v-if="site.images.experience[exp.company]"
+            :src="site.images.experience[exp.company]"
+            :alt="`${copy.experience.imageLabel}: ${exp.company}`"
+            class="h-64 min-h-0 w-full border object-cover sm:h-80 lg:h-full lg:min-h-[26rem] xl:min-h-[32rem]"
+            :class="{ 'lg:order-1': index % 2 === 1 }"
+            style="border-color: rgb(var(--line) / .2)"
+            loading="lazy"
+          />
+          <div v-else class="image-placeholder h-64 min-h-0 sm:h-80 lg:h-full lg:min-h-[26rem] xl:min-h-[32rem]" :class="{ 'lg:order-1': index % 2 === 1 }" role="img" :aria-label="`${copy.experience.imageLabel}: ${exp.company}`">
+            <div>
+              <span class="mono-heading text-7xl font-bold accent-lime">0{{ index + 1 }}</span>
+              <p class="mono-heading mt-4 text-sm">{{ copy.experience.imageLabel }}</p>
             </div>
-          </Transition>
+          </div>
         </article>
       </div>
     </div>

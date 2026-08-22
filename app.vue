@@ -1,50 +1,74 @@
 <script setup lang="ts">
-import { useNuxtApp } from 'nuxt/app'
-import { onMounted, ref } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted } from 'vue'
 
-const loading = ref(true)
-const nuxtApp = useNuxtApp()
+const { locale, site } = usePortfolio()
+let revealObserver: IntersectionObserver | undefined
 
-let timer: ReturnType<typeof setTimeout> | null = null
-
-const startLoading = () => {
-  loading.value = true
-
-  if (timer) clearTimeout(timer)
-  timer = setTimeout(() => {
-    loading.value = false
-    timer = null
-  }, 100000)
-}
-
-const stopLoading = () => {
-  loading.value = false
-  if (timer) {
-    clearTimeout(timer)
-    timer = null
-  }
-}
-
-onMounted(() => {
-  stopLoading()
+useSeoMeta({
+  title: () => site.value.siteTitle,
+  description: () => site.value.summary,
+  ogTitle: () => site.value.siteTitle,
+  ogDescription: () => site.value.summary,
+  ogType: 'website',
 })
 
-nuxtApp.hook('page:start', startLoading)
-nuxtApp.hook('page:finish', stopLoading)
+useHead({
+  htmlAttrs: {
+    lang: () => locale.value,
+  },
+})
+
+onMounted(async () => {
+  await nextTick()
+
+  const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  document.documentElement.classList.add('reveal-ready')
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    elements.forEach(element => element.classList.add('is-visible'))
+    return
+  }
+
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return
+      entry.target.classList.add('is-visible')
+      revealObserver?.unobserve(entry.target)
+    })
+  }, {
+    rootMargin: '0px 0px -8% 0px',
+    threshold: 0.08,
+  })
+
+  elements.forEach((element) => {
+    const delay = Math.min(Number(element.dataset.revealDelay) || 0, 320)
+    element.style.setProperty('--reveal-delay', `${delay}ms`)
+    revealObserver?.observe(element)
+  })
+})
+
+onBeforeUnmount(() => {
+  revealObserver?.disconnect()
+  document.documentElement.classList.remove('reveal-ready')
+})
 </script>
 
 <template>
-  <div class="min-h-dvh bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100">
-    <LoadingOverlay :show="loading" />
-
+  <div :lang="locale" class="min-h-dvh">
     <Navbar />
     <main>
       <Hero />
       <About />
-      <Experience />
       <Skills />
+      <Experience />
       <Projects />
       <Certificates />
+      <Education />
+      <CompetencySummary />
+      <Collaboration />
+      <Resume />
       <Contact />
     </main>
     <Footer />

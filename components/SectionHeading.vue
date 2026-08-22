@@ -3,12 +3,12 @@ defineProps<{ title: string; subtitle?: string }>()
 </script>
 
 <template>
-  <div class="mb-8">
-    <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+  <div class="mb-12 md:mb-16" data-reveal>
+    <h2 class="editorial-title">
       {{ title }}
     </h2>
 
-    <p v-if="subtitle" class="mt-2 max-w-2xl text-slate-600 dark:text-slate-300">
+    <p v-if="subtitle" class="muted mt-5 max-w-3xl text-lg leading-relaxed">
       {{ subtitle }}
     </p>
   </div>

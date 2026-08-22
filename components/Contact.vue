@@ -1,85 +1,67 @@
 <script setup lang="ts">
-import { site } from './../data/site'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
+import { useColorMode } from '#imports'
 
-const name = ref('')
-const email = ref('')
-const message = ref('')
+const { locale, site, copy } = usePortfolio()
+const colorMode = useColorMode()
+const linkedIn = computed(() => site.value.links.find(link => link.label === 'LinkedIn'))
+const github = computed(() => site.value.links.find(link => link.label === 'GitHub'))
+const portfolioPdfHref = computed(() => {
+  const theme = colorMode.value === 'dark' ? 'dark' : 'light'
 
-const mailtoHref = computed(() => {
-  const subject = encodeURIComponent(`Portfolio contact from ${name.value || 'Visitor'}`)
-  const body = encodeURIComponent(
-    `Name: ${name.value}\nEmail: ${email.value}\n\nMessage:\n${message.value}`
-  )
-  return `mailto:${site.email}?subject=${subject}&body=${body}`
+  return `/api/portfolio-pdf?locale=${locale.value}&theme=${theme}`
 })
-
-const sendEmail = () => {
-  if (!message.value.trim()) return
-  window.location.href = mailtoHref.value
-}
 </script>
 
 <template>
-  <section id="contact" class="section" data-aos="fade-up">
-    <div class="container-base">
-      <SectionHeading title="Contact" subtitle="Get in touch with me." />
+  <section id="contact" class="section">
+    <div class="container-base grid gap-10 lg:grid-cols-[1.2fr_.8fr]">
+      <div>
+        <SectionHeading :title="copy.contact.title" :subtitle="copy.contact.subtitle" />
+        <p class="max-w-2xl text-xl leading-8">{{ copy.contact.description }}</p>
 
-      <div class="grid gap-4 md:grid-cols-2">
-        <div class="card p-6 md:p-8">
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Reach me directly</h3>
-          <p class="mt-2 text-slate-600 dark:text-slate-300">Email or phone are the fastest channels.</p>
-
-          <div class="mt-5 space-y-3">
-            <a class="btn w-full justify-start" :href="`mailto:${site.email}`">
-              <i class="fa fa-envelope"></i>
-              {{ site.email }}
-            </a>
-
-            <a class="btn w-full justify-start" :href="`tel:${site.phone}`">
-              <i class="fa fa-phone"></i>
-              {{ site.phone }}
-            </a>
-          </div>
-
-          <div class="mt-6 flex flex-wrap gap-2">
-            <a v-for="l in site.links" :key="l.href"
-              class="chip transition hover:border-slate-900/20 dark:hover:border-white/20" :href="l.href"
-              target="_blank" rel="noreferrer">
-              <i :class="l.icon" class="mr-2"></i>
-              {{ l.label }}
-            </a>
-          </div>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2">
+          <article class="panel panel-muted p-6" data-reveal>
+            <p class="mono-heading font-bold">📍 {{ copy.contact.location }}</p>
+            <p class="muted mt-4">{{ site.location }}</p>
+          </article>
+          <article class="panel panel-muted p-6" data-reveal data-reveal-delay="80">
+            <p class="mono-heading font-bold">☎ {{ copy.contact.phone }}</p>
+            <a class="nav-link mt-4 inline-block font-bold underline accent-lime" :href="`tel:${site.phone}`">{{ site.phone }}</a>
+          </article>
+          <article class="panel panel-muted p-6 sm:col-span-2" data-reveal data-reveal-delay="120">
+            <p class="mono-heading font-bold">✉ {{ copy.contact.email }}</p>
+            <a class="nav-link mt-4 inline-block font-bold underline accent-lime" :href="`mailto:${site.email}`">{{ site.email }}</a>
+          </article>
         </div>
 
-        <div class="card p-6 md:p-8">
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Quick message</h3>
-          <p class="mt-2 text-slate-600 dark:text-slate-300">
-            Send via your email app (mailto).
-          </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a v-if="linkedIn" class="btn btn-primary" :href="linkedIn.href" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i>{{ copy.contact.linkedIn }}</a>
+          <a v-if="github" class="btn" :href="github.href" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i>GitHub</a>
+          <a
+            class="btn"
+            :href="portfolioPdfHref"
+            download
+            data-pdf-hide
+          >
+            <i class="fa-solid fa-file-pdf"></i>{{ copy.contact.exportPdf }}
+          </a>
+        </div>
+      </div>
 
-          <form class="mt-5 grid gap-3" @submit.prevent="sendEmail">
-            <input v-model="name" class="w-full rounded-2xl border border-slate-900/10 bg-white/70 px-4 py-3 text-slate-900
-                     outline-none backdrop-blur focus:ring-2 focus:ring-indigo-500/40
-                     dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:ring-indigo-400/30"
-              placeholder="Your name" autocomplete="name" />
-
-            <input v-model="email" class="w-full rounded-2xl border border-slate-900/10 bg-white/70 px-4 py-3 text-slate-900
-                     outline-none backdrop-blur focus:ring-2 focus:ring-indigo-500/40
-                     dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:ring-indigo-400/30"
-              placeholder="Email" type="email" autocomplete="email" />
-
-            <textarea v-model="message" class="min-h-28 w-full rounded-2xl border border-slate-900/10 bg-white/70 px-4 py-3 text-slate-900
-                     outline-none backdrop-blur focus:ring-2 focus:ring-indigo-500/40
-                     dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:ring-indigo-400/30"
-              placeholder="Message" />
-
-            <div class="flex flex-wrap items-center gap-3">
-              <button class="btn btn-primary w-fit text-black hover:text-white dark:text-white dark:hover:text-black" type="submit" :disabled="!message.trim()">
-                Send
-              </button>
-            </div>
-          </form>
+      <img
+        v-if="site.images.contact"
+        :src="site.images.contact"
+        :alt="copy.contact.imageLabel"
+        class="h-64 min-h-0 w-full border object-cover sm:h-80 lg:h-full lg:min-h-[30rem] xl:min-h-[36rem]"
+        style="border-color: rgb(var(--line) / .2)"
+        loading="lazy"
+        data-reveal="right"
+      />
+      <div v-else class="image-placeholder h-64 min-h-0 sm:h-80 lg:h-full lg:min-h-[30rem] xl:min-h-[36rem]" role="img" :aria-label="copy.contact.imageLabel" data-reveal="right">
+        <div>
+          <i class="fa-regular fa-handshake text-5xl accent-lime"></i>
+          <p class="mono-heading mt-4">{{ copy.contact.imageLabel }}</p>
         </div>
       </div>
     </div>

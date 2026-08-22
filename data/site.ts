@@ -38,9 +38,9 @@ export type Certificate = {
   imageAlt?: string
 }
 
-export const site = {
+const englishSite = {
   siteTitle: "Ulsyairil's Portfolio",
-  name: "Ulsyairil",
+  name: "Ulsyairil Oktorio Fadillah",
   title: "Full Stack Web Developer",
   location: "Balikpapan, Indonesia",
   email: "ulsyairil@outlook.co.id",
@@ -58,8 +58,22 @@ export const site = {
     },
   ],
   summary:
-    "Full Stack Web Developer with experience delivering end-to-end web applications using HTML, CSS, JavaScript, PHP, Node.js, and Vue. I enjoy turning requirements into clean UI, solid APIs, and maintainable code, with clear communication and strong problem-solving.",
-  avatar: "/avatar.jpg",
+    "Full Stack Developer with 3+ years of experience building end-to-end web applications, from intuitive frontends and robust backends to reliable deployments. Focused on Laravel, Node.js, and Vue/Nuxt to create scalable, maintainable systems that grow with business needs.",
+  avatar: "/images/avatar.png",
+  images: {
+    about: "/images/workspace.jpg",
+    experience: {
+      "Telkom Regional Infrastructure 4 Kalimantan": "/experience/experience_1.jpg",
+      "CV. Digital Teknologi Persada": "/experience/experience_2.jpg",
+      "Telkom Ignite Regional 6 Kalimantan": "/experience/experience_3.jpg",
+    } as Record<string, string>,
+    collaboration: [
+      "/images/teamwork_1.jpg", 
+      "/images/teamwork_2.jpg", 
+      "/images/teamwork_3.jpg"
+    ],
+    contact: "/images/contact.jpg",
+  },
   skills: [
     { name: "Nuxt", icon: "devicon-nuxtjs-plain", level: "Intermediate" },
     { name: "Vue", icon: "devicon-vuejs-plain", level: "Intermediate" },
@@ -99,7 +113,7 @@ export const site = {
   ],
   experience: [
     {
-      company: "TIF Regional 6 Kalimantan",
+      company: "Telkom Regional Infrastructure 4 Kalimantan",
       location: "Balikpapan · Indonesia",
       type: "Full time",
       period: "Jun 2025 - Present",
@@ -123,6 +137,12 @@ export const site = {
                   text: "Machine Learning Ticketing Prediction System and Image Classification for Telkom TIF Regional 6 Kalimantan",
                   sub: [
                     "Built with Node.js, TensorFlow.js, Express.js, and Docker",
+                  ],
+                },
+                {
+                  text: "Route Optimization System for field operations",
+                  sub: [
+                    "Implemented with OSRM and Valhalla to improve travel-time and operational efficiency.",
                   ],
                 },
                 {
@@ -160,42 +180,6 @@ export const site = {
                   sub: [
                     "Built with Laravel 10, Bootstrap 4, jQuery, MySQL, and Docker.",
                   ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      company: "PT. Global Jet Express",
-      location: "Balikpapan · Indonesia",
-      type: "Full time",
-      period: "Jan 2024 - Feb 2024",
-      summary:
-        "Worked as a warehouse admin, responsible for managing inventory, coordinating shipments, and ensuring accurate record-keeping of goods received and dispatched.",
-      roles: [
-        {
-          title: "Warehouse Admin",
-          period: "Jan 2024 - Feb 2024",
-          duration: "1 month",
-          description:
-            "Managed inventory, coordinated shipments, and ensured accurate record-keeping of goods received and dispatched. Collaborated with logistics teams to streamline warehouse operations and improve efficiency.",
-          sections: [
-            {
-              title: "Key projects and responsibilities",
-              items: [
-                {
-                  text: "Inbound and Outbound Shipment Management",
-                },
-                {
-                  text: "Sorting and Organizing Inventory",
-                },
-                {
-                  text: "Temporary Storage Management",
-                },
-                {
-                  text: "Administration and Reporting",
                 },
               ],
             },
@@ -356,3 +340,145 @@ export const site = {
     },
   ] as Certificate[],
 };
+
+const indonesianSite = {
+  ...englishSite,
+  siteTitle: "Portfolio Ulsyairil",
+  title: "Full Stack Web Developer",
+  location: "Balikpapan, Kalimantan Timur, Indonesia",
+  summary:
+    "Full Stack Developer dengan pengalaman 3+ tahun membangun aplikasi web end-to-end, dari frontend yang intuitif dan backend yang kuat hingga deployment yang andal. Berfokus pada Laravel, Node.js, dan Vue/Nuxt untuk menciptakan sistem yang scalable, mudah dipelihara, dan siap tumbuh bersama kebutuhan bisnis.",
+  experience: [
+    {
+      company: "Telkom Regional Infrastructure 4 Kalimantan",
+      location: "Balikpapan · Indonesia",
+      type: "Purnawaktu",
+      period: "Jun 2025 - Sekarang",
+      summary:
+        "Memimpin inisiatif digitalisasi dan peningkatan performa sistem infrastruktur regional dengan fokus pada efisiensi operasional, otomatisasi proses, dan keandalan aplikasi jangka panjang.",
+      roles: [
+        {
+          title: "Web Developer",
+          period: "Jun 2025 - Sekarang",
+          description:
+            "Mengembangkan dan memelihara berbagai sistem manajemen internal menggunakan Laravel, mengelola deployment dengan Docker, serta menerapkan solusi Machine Learning untuk analisis data dan prediksi tiket.",
+          sections: [
+            {
+              title: "Proyek dan tanggung jawab utama",
+              items: [
+                {
+                  text: "DALAPA (Data Lapangan Pelanggan) untuk Telkom Regional Infrastructure 4 Kalimantan",
+                  sub: ["Dibangun dengan Laravel 9, Bootstrap 3, jQuery, dan MySQL"],
+                },
+                {
+                  text: "Sistem prediksi tiket dan klasifikasi gambar berbasis Machine Learning",
+                  sub: ["Dibangun dengan Node.js, TensorFlow.js, Express.js, dan Docker"],
+                },
+                {
+                  text: "Sistem optimasi rute untuk operasional lapangan",
+                  sub: ["Menggunakan OSRM dan Valhalla untuk meningkatkan efisiensi waktu perjalanan dan operasional"],
+                },
+                {
+                  text: "Replikasi dan backup basis data menggunakan Docker",
+                  sub: ["Otomatisasi menggunakan Docker, Bash, dan Cron untuk menjaga integritas serta ketersediaan data"],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      company: "CV. Digital Teknologi Persada",
+      location: "Remote · Indonesia",
+      type: "Purnawaktu",
+      period: "Mar 2024 - Jun 2025",
+      summary:
+        "Mengembangkan dan memelihara sistem informasi rumah sakit serta klinik berbasis Laravel untuk lingkungan produksi.",
+      roles: [
+        {
+          title: "Full Stack Developer (Remote)",
+          period: "Mar 2024 - Jun 2025",
+          duration: "1 tahun 4 bulan",
+          description:
+            "Merancang, mengembangkan, dan memelihara sistem manajemen internal. Berkolaborasi lintas fungsi untuk menerjemahkan kebutuhan menjadi solusi yang meningkatkan efisiensi operasional.",
+          sections: [
+            {
+              title: "Proyek dan tanggung jawab utama",
+              items: [
+                {
+                  text: "Sistem Manajemen Rumah Sakit dan Klinik di Singapura",
+                  sub: ["Dibangun dengan Laravel 10, Bootstrap 4, jQuery, MySQL, dan Docker"],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      company: "Telkom Ignite Regional 6 Kalimantan",
+      location: "Balikpapan · Indonesia",
+      type: "Purnawaktu",
+      period: "Okt 2020 - Des 2023",
+      summary:
+        "Mengembangkan aplikasi internal dan platform operasional untuk digitalisasi proses bisnis, percepatan penanganan layanan, dan peningkatan keandalan sistem.",
+      roles: [
+        {
+          title: "Full Stack Web Developer",
+          period: "Okt 2020 - Des 2023",
+          duration: "3 tahun 3 bulan",
+          description:
+            "Mengembangkan dan memelihara sistem menggunakan PHP Native, CodeIgniter 3, dan Laravel serta berkolaborasi lintas fungsi dalam perancangan dan implementasi fitur.",
+          sections: [
+            {
+              title: "Proyek dan tanggung jawab utama",
+              items: [
+                {
+                  text: "PENGKOLAN - sistem manajemen kontrak online untuk Telkom Regional 6 Kalimantan",
+                  sub: ["Dibangun dengan CodeIgniter 3, MySQL, Bootstrap 4, dan jQuery"],
+                },
+                {
+                  text: "Virtual Plasa untuk CSR dan pelanggan IndiHome",
+                  sub: ["Dibangun dengan PHP Native, MySQL, Bootstrap, dan jQuery"],
+                },
+                {
+                  text: "SIDION - sistem manajemen layanan add-on IndiHome",
+                  sub: ["Dibangun dengan Laravel 10, Bootstrap 4, jQuery, dan PostgreSQL"],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ] as Experience[],
+  projects: [
+    {
+      ...englishSite.projects[0],
+      description:
+        "Aplikasi web untuk mendigitalisasi pengelolaan data lapangan pelanggan Telkom Regional Infrastructure 4 Kalimantan sehingga data lebih akurat dan mudah diakses.",
+    },
+    {
+      ...englishSite.projects[1],
+      description:
+        "Platform pemesanan properti yang membantu pengguna menelusuri, mencari, dan memesan properti secara daring dengan alur yang lebih jelas dan efisien.",
+    },
+    {
+      ...englishSite.projects[2],
+      description:
+        "Platform forum kota sehat untuk Balikpapan dan sekitarnya yang menyajikan informasi kesehatan, program, serta agenda kegiatan.",
+    },
+    {
+      ...englishSite.projects[3],
+      title: "PENGKOLAN - Sistem Manajemen Kontrak Online Telkom Regional 6 Kalimantan",
+      description:
+        "Aplikasi web yang menyederhanakan proses manajemen kontrak, meningkatkan aksesibilitas, dan memperkuat kolaborasi antarpemangku kepentingan.",
+    },
+  ] as Project[],
+}
+
+export const site = englishSite
+
+export const getSite = (locale: 'en' | 'id') =>
+  locale === 'id' ? indonesianSite : englishSite

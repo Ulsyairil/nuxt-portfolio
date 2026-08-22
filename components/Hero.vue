@@ -1,129 +1,50 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { site } from './../data/site'
 
-const primary = computed(() => `rgb(var(--primary))`)
-const primary2 = computed(() => `rgb(var(--primary-2))`)
+const { locale, site, copy } = usePortfolio()
+const linkedIn = computed(() => site.value.links.find(link => link.label === 'LinkedIn'))
+const github = computed(() => site.value.links.find(link => link.label === 'GitHub'))
+const resumeHref = computed(() => `/resume/ulsyairil-oktorio-fadillah-resume-${locale.value}.pdf`)
 </script>
 
 <template>
-  <section id="top" class="section hero-wrap" :style="{ '--p1': primary, '--p2': primary2 }">
-    <div class="hero-bg" aria-hidden="true"></div>
-    
-    <div class="container-base grid items-center gap-8 md:grid-cols-12">
-      <div class="md:col-span-7" data-aos="fade-right">
-        <p class="chip inline-flex items-center">
-          Available for freelance / full-time
-        </p>
+  <section id="top" class="min-h-[calc(100vh-4rem)] py-16 md:py-24">
+    <div class="container-base grid items-center gap-10 lg:grid-cols-[.82fr_1.38fr] lg:gap-20">
+      <figure class="relative mx-auto w-[78%] max-w-[18rem] lg:mx-0 lg:w-full lg:max-w-md" data-reveal="left">
+        <div class="absolute -left-4 -top-4 h-24 w-24 border-l-4 border-t-4" style="border-color: rgb(var(--lime))" aria-hidden="true"></div>
+        <img :src="site.avatar" :alt="copy.hero.avatarAlt" class="relative aspect-[4/5] w-full border object-cover" style="border-color: rgb(var(--line) / .25)" />
+      </figure>
 
-        <h1
-          class="mt-4 text-4xl font-extrabold tracking-tight leading-tight md:text-5xl text-slate-900 dark:text-white">
+      <div data-reveal="right" data-reveal-delay="100">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="tag">{{ copy.hero.role }}</span>
+          <span class="mono-heading text-sm font-bold uppercase accent-lime">{{ site.location }}</span>
+        </div>
+
+        <h1 class="mono-heading mt-7 text-5xl font-bold leading-[.98] tracking-tight accent-coral sm:text-6xl xl:text-7xl">
           {{ site.name }}
-          <span class="block bg-clip-text text-transparent"
-            :style="{ backgroundImage: `linear-gradient(135deg, ${primary}, ${primary2})` }">
-            {{ site.title }}
-          </span>
         </h1>
 
-        <p class="mt-4 max-w-xl text-slate-600 dark:text-slate-300">
+        <p class="mt-7 max-w-3xl text-xl italic leading-relaxed md:text-2xl">
+          {{ copy.hero.tagline }}
+        </p>
+
+        <p class="muted mt-6 max-w-3xl text-lg leading-relaxed">
           {{ site.summary }}
         </p>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a class="btn btn-primary text-black hover:text-white dark:text-white dark:hover:text-black"
-            href="#projects">View Projects</a>
-          <a class="btn" href="#contact">Contact</a>
-          <a class="btn" :href="site.links[0]?.href" target="_blank" rel="noreferrer">
-            <i class="devicon-github-original"></i>
-            GitHub
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a v-if="linkedIn" class="btn btn-primary" :href="linkedIn.href" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-linkedin"></i>{{ copy.hero.linkedIn }}
           </a>
-        </div>
-
-        <div class="mt-6 text-sm text-slate-600 dark:text-slate-300">
-          <span>{{ site.location }}</span>
-        </div>
-      </div>
-
-      <div class="md:col-span-5 transition hover:-translate-y-0.5 hover:shadow-md" data-aos="fade-up">
-        <div class="card p-4 md:p-6">
-          <div class="aspect-square overflow-hidden rounded-2xl border border-slate-900/10 bg-white/70
-                   dark:border-white/10 dark:bg-white/5">
-            <img :src="site.avatar" alt="Avatar" class="h-full w-full object-cover" />
-          </div>
-
-          <div class="mt-4 grid grid-cols-1 gap-2 text-sm">
-            <a class="text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
-              :href="`mailto:${site.email}`">
-              <i class="fa fa-envelope"></i>
-              {{ site.email }}
-            </a>
-
-            <a class="text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
-              :href="`tel:${site.phone}`">
-              <i class="fa fa-phone"></i>
-              {{ site.phone }}
-            </a>
-
-            <div class="mt-2 flex flex-wrap gap-2">
-              <a v-for="l in site.links" :key="l.href"
-                class="chip transition hover:border-slate-900/20 dark:hover:border-white/20" :href="l.href"
-                target="_blank" rel="noreferrer">
-                <i :class="l.icon"></i>
-                {{ l.label }}
-              </a>
-            </div>
-          </div>
+          <a v-if="github" class="btn" :href="github.href" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-github"></i>{{ copy.hero.github }}
+          </a>
+          <a class="btn" :href="resumeHref" target="_blank" rel="noreferrer">
+            <i class="fa-regular fa-file-lines"></i>{{ copy.hero.resume }}
+          </a>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: -25%;
-  pointer-events: none;
-  z-index: 0;
-
-  background:
-    radial-gradient(600px 380px at 20% 25%, color-mix(in srgb, var(--p1) 70%, transparent) 0%, transparent 60%),
-    radial-gradient(520px 340px at 80% 30%, color-mix(in srgb, var(--p2) 65%, transparent) 0%, transparent 62%),
-    radial-gradient(560px 420px at 55% 85%, rgba(255, 255, 255, 0.10) 0%, transparent 65%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 45%, rgba(0, 0, 0, 0.10));
-
-  filter: blur(34px);
-  opacity: 0.85;
-  transform: translate3d(0, 0, 0);
-  animation: heroFloat 16s ease-in-out infinite;
-}
-
-@keyframes heroFloat {
-  0% {
-    transform: translate3d(-2%, -2%, 0) scale(1.02);
-  }
-
-  35% {
-    transform: translate3d(3%, -1%, 0) scale(1.06);
-  }
-
-  70% {
-    transform: translate3d(-1%, 3%, 0) scale(1.03);
-  }
-
-  100% {
-    transform: translate3d(-2%, -2%, 0) scale(1.02);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg {
-    animation: none;
-  }
-}
-</style>

@@ -22,3 +22,30 @@ Edit `site.projects` in `data/site.ts`.
 ## Add certificates
 Edit `site.certificates` in `data/site.ts`.
 (Optional) Add images under `public/certificates/` and reference them like `/certificates/my-certificate.png`.
+
+## Export portfolio PDF on Vercel
+
+The **Export Portfolio PDF** action generates a desktop-ratio PDF through
+`/api/portfolio-pdf`. The export follows the active website locale and resolved
+light/dark theme. The endpoint streams the generated document so image-heavy
+exports are not held in one response buffer. Pages use a fixed 1440 x 900 layout,
+and each major portfolio section starts on a new page to prevent oversized blank
+areas and unstable browser pagination.
+
+The Vercel deployment uses `puppeteer-core` with `@sparticuz/chromium` on the
+Node.js 22 runtime. For a custom production domain, set:
+
+```bash
+NUXT_PORTFOLIO_PDF_SITE_URL=https://your-domain.example
+```
+
+Preview deployments protected by Vercel Authentication can set either
+`VERCEL_AUTOMATION_BYPASS_SECRET` or
+`NUXT_PORTFOLIO_PDF_VERCEL_BYPASS_SECRET`.
+
+Local development automatically detects Google Chrome, Chromium, or Microsoft
+Edge from their standard installation paths. To use a different browser, set:
+
+```bash
+PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" npm run dev
+```
