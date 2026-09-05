@@ -54,7 +54,7 @@ const englishSite = {
     {
       label: "LinkedIn",
       icon: "devicon-linkedin-plain",
-      href: "https://www.linkedin.com/in/ulsyairil-oktorio-fadillah-70a88617b/",
+      href: "https://www.linkedin.com/in/ulsyairil",
     },
   ],
   summary:
@@ -116,13 +116,13 @@ const englishSite = {
       company: "Telkom Regional Infrastructure 4 Kalimantan",
       location: "Balikpapan · Indonesia",
       type: "Full time",
-      period: "Jun 2025 - Present",
+      period: "Jun 2025 - Dec 2026",
       summary:
-        "Worked as a web developer, developing and maintaining multiple internal systems including field data management systems using Laravel framework. Also responsible for deploying and managing applications using Docker containers. And implementing Machine Learning solutions for data analysis and prediction ticketing system.",
+        "Worked as a programmer, developing and maintaining multiple internal systems including field data management systems using Laravel framework. Also responsible for deploying and managing applications using Docker containers. And implementing Machine Learning solutions for data analysis and prediction ticketing system.",
       roles: [
         {
-          title: "Web Developer",
-          period: "Jun 2025 - Present",
+          title: "Programmer",
+          period: "Jun 2025 - Dec 2026",
           description:
             "Developed and maintained multiple internal management systems using Laravel framework. Collaborated with cross-functional teams to gather requirements, design solutions, and implement features that improved operational efficiency. Deployed and managed applications using Docker containers. Implemented Machine Learning solutions for data analysis and prediction ticketing system.",
           sections: [
@@ -353,13 +353,13 @@ const indonesianSite = {
       company: "Telkom Regional Infrastructure 4 Kalimantan",
       location: "Balikpapan · Indonesia",
       type: "Purnawaktu",
-      period: "Jun 2025 - Sekarang",
+      period: "Jun 2025 - Des 2026",
       summary:
         "Memimpin inisiatif digitalisasi dan peningkatan performa sistem infrastruktur regional dengan fokus pada efisiensi operasional, otomatisasi proses, dan keandalan aplikasi jangka panjang.",
       roles: [
         {
-          title: "Web Developer",
-          period: "Jun 2025 - Sekarang",
+          title: "Programmer",
+          period: "Jun 2025 - Des 2026",
           description:
             "Mengembangkan dan memelihara berbagai sistem manajemen internal menggunakan Laravel, mengelola deployment dengan Docker, serta menerapkan solusi Machine Learning untuk analisis data dan prediksi tiket.",
           sections: [
