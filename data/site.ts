@@ -63,7 +63,8 @@ const englishSite = {
   images: {
     about: "/images/workspace.jpg",
     experience: {
-      "Telkom Regional Infrastructure 4 Kalimantan": "/experience/experience_1.jpg",
+      "Infranexia by Telkom Indonesia": "/experience/experience_1.jpg",
+      "Infranexia oleh Telkom Indonesia": "/experience/experience_1.jpg",
       "CV. Digital Teknologi Persada": "/experience/experience_2.jpg",
       "Telkom Ignite Regional 6 Kalimantan": "/experience/experience_3.jpg",
     } as Record<string, string>,
@@ -113,7 +114,7 @@ const englishSite = {
   ],
   experience: [
     {
-      company: "Telkom Regional Infrastructure 4 Kalimantan",
+      company: "Infranexia by Telkom Indonesia",
       location: "Balikpapan · Indonesia",
       type: "Full time",
       period: "Jun 2025 - Dec 2026",
@@ -350,7 +351,7 @@ const indonesianSite = {
     "Full Stack Developer dengan pengalaman 3+ tahun membangun aplikasi web end-to-end, dari frontend yang intuitif dan backend yang kuat hingga deployment yang andal. Berfokus pada Laravel, Node.js, dan Vue/Nuxt untuk menciptakan sistem yang scalable, mudah dipelihara, dan siap tumbuh bersama kebutuhan bisnis.",
   experience: [
     {
-      company: "Telkom Regional Infrastructure 4 Kalimantan",
+      company: "Infranexia oleh Telkom Indonesia",
       location: "Balikpapan · Indonesia",
       type: "Purnawaktu",
       period: "Jun 2025 - Des 2026",
@@ -367,7 +368,7 @@ const indonesianSite = {
               title: "Proyek dan tanggung jawab utama",
               items: [
                 {
-                  text: "DALAPA (Data Lapangan Pelanggan) untuk Telkom Regional Infrastructure 4 Kalimantan",
+                  text: "DALAPA (Data Lapangan Pelanggan) untuk Infranexia oleh Telkom Indonesia",
                   sub: ["Dibangun dengan Laravel 9, Bootstrap 3, jQuery, dan MySQL"],
                 },
                 {
@@ -457,7 +458,7 @@ const indonesianSite = {
     {
       ...englishSite.projects[0],
       description:
-        "Aplikasi web untuk mendigitalisasi pengelolaan data lapangan pelanggan Telkom Regional Infrastructure 4 Kalimantan sehingga data lebih akurat dan mudah diakses.",
+        "Aplikasi web untuk mendigitalisasi pengelolaan data lapangan pelanggan Infranexia oleh Telkom Indonesia sehingga data lebih akurat dan mudah diakses.",
     },
     {
       ...englishSite.projects[1],
