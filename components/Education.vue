@@ -18,11 +18,11 @@ const { copy } = usePortfolio()
         <div data-reveal="right" data-reveal-delay="90">
           <p class="mono-heading text-2xl font-bold">{{ copy.education.languages }}</p>
           <div class="mt-8 grid md:grid-cols-2">
-            <article class="panel panel-muted p-7">
+            <article v-spotlight class="spotlight panel panel-muted p-7">
               <h3 class="mono-heading text-2xl font-bold">{{ copy.education.indonesian }}</h3>
               <p class="muted mt-6 text-lg">{{ copy.education.indonesianLevel }}</p>
             </article>
-            <article class="panel p-7">
+            <article v-spotlight class="spotlight panel p-7">
               <h3 class="mono-heading text-2xl font-bold">{{ copy.education.english }}</h3>
               <p class="muted mt-6 text-lg">{{ copy.education.englishLevel }}</p>
             </article>

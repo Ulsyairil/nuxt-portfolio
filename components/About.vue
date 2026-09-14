@@ -10,7 +10,7 @@ const { site, copy } = usePortfolio()
         <p class="max-w-4xl text-lg leading-8">{{ copy.about.intro }}</p>
 
         <div class="mt-10 grid gap-5 md:grid-cols-2">
-          <article v-for="(card, index) in copy.about.cards" :key="card.title" class="panel p-7" :class="{ 'md:col-span-2': index === 2 }" data-reveal :data-reveal-delay="index * 80">
+          <article v-for="(card, index) in copy.about.cards" :key="card.title" v-spotlight class="spotlight panel p-7" :class="{ 'md:col-span-2': index === 2 }" data-reveal :data-reveal-delay="index * 80">
             <h3 class="mono-heading text-2xl font-bold">{{ card.title }}</h3>
             <p class="muted mt-4 text-base leading-7">{{ card.text }}</p>
           </article>

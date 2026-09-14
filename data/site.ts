@@ -7,6 +7,7 @@ export type Project = {
     href: string
   }[]
   image?: string
+  impact?: string
 }
 
 export type Experience = {
@@ -32,6 +33,7 @@ export type Experience = {
 
 export type Certificate = {
   title: string
+  titleId?: string
   issuer: string
   proof?: string
   image?: string
@@ -233,6 +235,8 @@ const englishSite = {
       title: "DALAPA (Data Lapangan Pelanggan) Management System",
       description:
         "A web application to manage field customer data for Telkom TIF Regional 6 Kalimantan, improving data accuracy and accessibility.",
+      impact:
+        "Digitized field-data collection for Telkom TIF Regional 6, making customer records accurate, searchable, and instantly available to the team.",
       stack: ["Laravel 10", "Bootstrap 3", "jQuery", "MySQL"],
       links: [],
       image: "/projects/dalapa.png",
@@ -241,6 +245,8 @@ const englishSite = {
       title: "Stratlaunch Booking Property Platform",
       description:
         "A property booking platform that allows users to browse, search, and book properties online with ease.",
+      impact:
+        "Condensed the search-to-booking journey into one flow, making property discovery fast and friction-free for users.",
       stack: [
         "Laravel 12",
         "Bootstrap 4",
@@ -257,6 +263,8 @@ const englishSite = {
       title: "FORKOHAT (Freelance Project)",
       description:
         "A healthy city forum platform for the people of Balikpapan and its surroundings, which provides information about health and well-being as well as programs and the order of activities carried out.",
+      impact:
+        "Put health programs and activities where the Balikpapan community can see them, supporting better public health engagement.",
       stack: ["Node.js", "Adonis.js", "Vue.js", "Nuxt.js", "MySQL", "Redis"],
       links: [],
       image: "/projects/forkohat.png",
@@ -266,6 +274,8 @@ const englishSite = {
         "Pengkolan (Pengelolaan Kontrak Online) is an Online Contract Management System for Telkom Indonesia Regional 6 Kalimantan",
       description:
         "A web application that streamlines contract management processes, improves accessibility, and enhances collaboration among stakeholders.",
+      impact:
+        "Moved the whole contract lifecycle online, cutting turnaround and giving stakeholders real-time visibility and collaboration.",
       stack: ["Codeigniter 3", "Bootstrap 4", "jQuery", "MySQL"],
       links: [],
       image: "/projects/pengkolan.png",
@@ -275,66 +285,112 @@ const englishSite = {
   certificates: [
     {
       title: "Javascript Intermediate",
+      titleId: "Javascript Menengah",
       issuer: "Hackerrank",
       proof: "https://www.hackerrank.com/certificates/db7803f5d587",
       image: '/certificate/hackerrank-logo.png',
     },
     {
       title: "Javascript Basic",
+      titleId: "Javascript Dasar",
       issuer: "Hackerrank",
       proof: "https://www.hackerrank.com/certificates/7e08f79e86b3",
       image: '/certificate/hackerrank-logo.png',
     },
     {
-      title: "IT Support Google",
+      title: "Google IT Support",
+      titleId: "Dukungan TI Google",
       issuer: "Coursera",
       proof: "https://coursera.org/verify/professional-cert/SUXT8JXNYL3T",
       image: '/certificate/coursera-logo.png',
     },
     {
       title: "Introduction to Financial Literacy",
+      titleId: "Pengenalan Literasi Keuangan",
       issuer: "Dicoding",
       proof: "https://www.dicoding.com/certificates/1RXYQ3LJKZVM",
       image: '/certificate/dicoding-logo.png',
     },
     {
-      title: "Belajar Dasar Cloud dan Gen AI di AWS",
+      title: "Cloud Computing and Gen AI Basics on AWS",
+      titleId: "Belajar Dasar Cloud dan Gen AI di AWS",
       issuer: "Dicoding",
       proof: "https://www.dicoding.com/certificates/N9ZO2OY4RPG5",
       image: '/certificate/dicoding-logo.png',
     },
     {
+      title: "Learn JavaScript Programming Basics",
+      titleId: "Belajar Dasar Pemrograman JavaScript",
+      issuer: "Dicoding",
+      proof: "https://www.dicoding.com/certificates/53XEK2M4VXRN",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Back-End for Beginners with JavaScript",
+      titleId: "Belajar Back-End Pemula Dengan JavaScript",
+      issuer: "Dicoding",
+      proof: "https://www.dicoding.com/certificates/81P25917NPOY",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Implementing Data Science with Microsoft Fabric",
+      titleId: "Belajar Penerapan Data Science dengan Microsoft Fabric",
+      issuer: "Dicoding",
+      proof: "https://www.dicoding.com/certificates/MEPJ28YRLP3V",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Building Gen AI Applications with Microsoft Azure",
+      titleId: "Membangun Aplikasi Gen AI dengan Microsoft Azure",
+      issuer: "Dicoding",
+      proof: "https://www.dicoding.com/certificates/JLX1V36VNZ72",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Getting Started with Python",
+      titleId: "Memulai Pemrograman dengan Python",
+      issuer: "Dicoding",
+      proof: "https://www.dicoding.com/certificates/07Z67RVRJPQR",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
       title: "Javascript Intermediate Courses",
+      titleId: "Kursus Javascript Menengah",
       issuer: "Sololearn",
       proof: "https://www.sololearn.com/en/certificates/CC-O14Q3OPC",
       image: '/certificate/sololearn-logo.png',
     },
     {
       title: "Javascript Courses",
+      titleId: "Kursus Javascript",
       issuer: "Sololearn",
       proof: "https://www.sololearn.com/en/certificates/CT-Y3RA5E3I",
       image: '/certificate/sololearn-logo.png',
     },
     {
       title: "SQL Courses",
+      titleId: "Kursus SQL",
       issuer: "Sololearn",
       proof: "https://www.sololearn.com/en/certificates/CT-YO0FE8F6",
       image: '/certificate/sololearn-logo.png',
     },
     {
       title: "Golang Courses",
+      titleId: "Kursus Golang",
       issuer: "Sololearn",
       proof: "https://www.sololearn.com/en/certificates/CT-JMVCABGO",
       image: '/certificate/sololearn-logo.png',
     },
     {
       title: "React + Redux Courses",
+      titleId: "Kursus React + Redux",
       issuer: "Sololearn",
       proof: "https://www.sololearn.com/en/certificates/CT-HHO8UPVI",
       image: '/certificate/sololearn-logo.png',
     },
     {
       title: "PHP Courses",
+      titleId: "Kursus PHP",
       issuer: "Sololearn",
       proof: "https://www.sololearn.com/en/certificates/CT-FPR4YPA2",
       image: '/certificate/sololearn-logo.png',
@@ -459,27 +515,48 @@ const indonesianSite = {
       ...englishSite.projects[0],
       description:
         "Aplikasi web untuk mendigitalisasi pengelolaan data lapangan pelanggan Infranexia oleh Telkom Indonesia sehingga data lebih akurat dan mudah diakses.",
+      impact:
+        "Mendigitalkan pendataan lapangan untuk Telkom TIF Regional 6, membuat data pelanggan akurat, mudah dicari, dan langsung tersedia bagi tim.",
     },
     {
       ...englishSite.projects[1],
       description:
         "Platform pemesanan properti yang membantu pengguna menelusuri, mencari, dan memesan properti secara daring dengan alur yang lebih jelas dan efisien.",
+      impact:
+        "Menyederhanakan alur pencarian hingga pemesanan properti dalam satu proses, membuat penemuan properti cepat dan bebas hambatan.",
     },
     {
       ...englishSite.projects[2],
       description:
         "Platform forum kota sehat untuk Balikpapan dan sekitarnya yang menyajikan informasi kesehatan, program, serta agenda kegiatan.",
+      impact:
+        "Menghadirkan program dan kegiatan kesehatan di satu wadah yang mudah diakses masyarakat Balikpapan, mendukung keterlibatan publik yang lebih baik.",
     },
     {
       ...englishSite.projects[3],
       title: "PENGKOLAN - Sistem Manajemen Kontrak Online Telkom Regional 6 Kalimantan",
       description:
         "Aplikasi web yang menyederhanakan proses manajemen kontrak, meningkatkan aksesibilitas, dan memperkuat kolaborasi antarpemangku kepentingan.",
+      impact:
+        "Memindahkan seluruh siklus kontrak ke sistem daring, mempercepat proses dan memberi pemangku kepentingan visibilitas serta kolaborasi yang lebih baik.",
     },
   ] as Project[],
 }
 
 export const site = englishSite
 
-export const getSite = (locale: 'en' | 'id') =>
-  locale === 'id' ? indonesianSite : englishSite
+export const getSite = (locale: 'en' | 'id') => {
+  const base = locale === 'id' ? indonesianSite : englishSite
+
+  if (locale === 'id') {
+    return {
+      ...base,
+      certificates: base.certificates.map(certificate => ({
+        ...certificate,
+        title: certificate.titleId ?? certificate.title,
+      })),
+    }
+  }
+
+  return base
+}

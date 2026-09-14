@@ -12,7 +12,7 @@ const featured = computed(() => site.value.experience.slice(0, 3))
 
       <p class="tag mb-7">{{ copy.experience.overview }}</p>
       <div class="grid gap-1 md:grid-cols-3">
-        <article v-for="(exp, index) in featured" :key="exp.company" class="panel p-7" :class="index === 0 ? 'panel-muted' : ''" data-reveal :data-reveal-delay="index * 80">
+        <article v-for="(exp, index) in featured" :key="exp.company" v-spotlight v-tilt class="spotlight panel p-7 tilt" :class="index === 0 ? 'panel-muted' : ''" data-reveal :data-reveal-delay="index * 80">
           <span class="mono-heading text-4xl font-bold accent-lime">0{{ index + 1 }}</span>
           <p class="mono-heading mt-7 text-lg font-bold">{{ exp.period }}</p>
           <h3 class="mt-3 text-xl font-bold">{{ exp.company }}</h3>

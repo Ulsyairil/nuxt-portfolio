@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const { site, copy } = usePortfolio()
 const mobileOpen = ref(false)
+const active = ref('#top')
+let onScroll: (() => void) | null = null
 
 const nav = computed(() => [
   { label: copy.value.nav.home, href: '#top' },
@@ -16,6 +18,46 @@ const nav = computed(() => [
   { label: copy.value.nav.resume, href: '#resume' },
   { label: copy.value.nav.contact, href: '#contact' },
 ])
+
+onMounted(() => {
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('main [id]'))
+    .filter(element => nav.value.some(item => item.href === `#${element.id}`))
+
+  let ticking = false
+
+  onScroll = () => {
+    if (ticking) return
+    ticking = true
+
+    requestAnimationFrame(() => {
+      const pos = window.scrollY + 160
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4
+
+      let current = '#top'
+      for (const element of sections) {
+        if (element.getBoundingClientRect().top + window.scrollY <= pos) {
+          current = `#${element.id}`
+        }
+      }
+
+      if (atBottom) {
+        current = nav.value[nav.value.length - 1].href
+      }
+
+      active.value = current
+      ticking = false
+    })
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+})
+
+onBeforeUnmount(() => {
+  if (onScroll) {
+    window.removeEventListener('scroll', onScroll)
+  }
+})
 </script>
 
 <template>
@@ -27,7 +69,7 @@ const nav = computed(() => [
       </a>
 
       <nav class="hidden items-center gap-4 2xl:flex" aria-label="Primary navigation">
-        <a v-for="item in nav" :key="item.href" :href="item.href" class="nav-link muted whitespace-nowrap text-sm font-semibold transition">
+        <a v-for="item in nav" :key="item.href" :href="item.href" class="nav-link muted whitespace-nowrap text-sm font-semibold transition" :class="{ 'active-link': active === item.href }">
           {{ item.label }}
         </a>
       </nav>
@@ -61,7 +103,7 @@ const nav = computed(() => [
           :key="item.href"
           :href="item.href"
           class="nav-link flex min-h-12 items-center justify-between gap-4 border-b py-3 text-sm font-bold sm:px-3"
-          :class="{ 'accent-lime': item.href === '#resume' }"
+          :class="{ 'accent-lime': item.href === '#resume' || active === item.href }"
           style="border-color: rgb(var(--line) / .12)"
           @click="mobileOpen = false"
         >
@@ -72,3 +114,9 @@ const nav = computed(() => [
     </nav>
   </header>
 </template>
+
+<style scoped>
+.active-link {
+  color: rgb(var(--lime));
+}
+</style>

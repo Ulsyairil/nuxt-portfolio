@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const { site, copy } = usePortfolio()
 
@@ -26,6 +26,18 @@ const platformAppearance = {
     logoSize: '48px',
   },
 } as const
+
+const expanded = ref<string[]>([])
+
+const toggle = (name: string) => {
+  if (expanded.value.includes(name)) {
+    expanded.value = expanded.value.filter(n => n !== name)
+  } else {
+    expanded.value = [...expanded.value, name]
+  }
+}
+
+const isExpanded = (name: string) => expanded.value.includes(name)
 
 const platforms = computed(() =>
   platformOrder.map((name, index) => {
@@ -57,7 +69,7 @@ const platforms = computed(() =>
           data-reveal
           :data-reveal-delay="(Number(platform.number) - 1) % 2 * 90"
         >
-          <header class="flex items-start justify-between gap-5 border-b pb-6" :class="platform.featured ? 'border-black/20' : ''" :style="platform.featured ? undefined : 'border-color: rgb(var(--line) / .18)'">
+          <header class="flex cursor-pointer items-start justify-between gap-5 border-b pb-6 sm:items-center" :class="platform.featured ? 'border-black/20' : ''" :style="platform.featured ? undefined : 'border-color: rgb(var(--line) / .18)'" role="button" :aria-expanded="isExpanded(platform.name)" :aria-controls="`cert-${platform.name.split(' ').join('-').toLowerCase()}`" :tabindex="0" @click="toggle(platform.name)" @keydown.enter="toggle(platform.name)" @keydown.space.prevent="toggle(platform.name)">
             <div class="flex min-w-0 items-center gap-4">
               <div
                 class="platform-logo grid shrink-0 place-items-center overflow-hidden border"
@@ -84,10 +96,25 @@ const platforms = computed(() =>
                 <h3 class="mono-heading mt-2 text-3xl font-bold">{{ platform.name }}</h3>
               </div>
             </div>
-            <span class="mono-heading text-sm font-bold">{{ platform.certificates.length }}</span>
+            <span class="flex shrink-0 items-center gap-3">
+              <span class="mono-heading text-sm font-bold">{{ platform.certificates.length }}</span>
+              <span
+                class="cert-arrow grid h-8 w-8 place-items-center border"
+                :class="isExpanded(platform.name) ? 'is-open' : ''"
+                :style="`border-color: rgb(var(--line) / .22)`"
+                aria-hidden="true"
+              >
+                <i class="fa-solid fa-chevron-down"></i>
+              </span>
+            </span>
           </header>
 
-          <ul class="divide-y" :class="platform.featured ? 'divide-black/20' : ''">
+          <div
+            :id="`cert-${platform.name.split(' ').join('-').toLowerCase()}`"
+            class="cert-body grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out"
+            :class="isExpanded(platform.name) ? 'is-open' : ''"
+          >
+            <ul class="divide-y overflow-hidden" :class="platform.featured ? 'divide-black/20' : ''">
             <li
               v-for="certificate in platform.certificates"
               :key="certificate.title"
@@ -114,7 +141,8 @@ const platforms = computed(() =>
               </a>
               <span v-else class="muted text-xs">{{ copy.certificates.unavailable }}</span>
             </li>
-          </ul>
+            </ul>
+          </div>
         </article>
       </div>
     </div>
@@ -126,6 +154,22 @@ const platforms = computed(() =>
   border-color: rgb(var(--lime-bright));
   background: rgb(var(--lime-bright));
   color: #151515;
+}
+
+.cert-body {
+  grid-template-rows: 0fr;
+}
+
+.cert-body.is-open {
+  grid-template-rows: 1fr;
+}
+
+.cert-arrow {
+  transition: transform .3s ease;
+}
+
+.cert-arrow.is-open {
+  transform: rotate(180deg);
 }
 
 .platform-logo {

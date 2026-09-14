@@ -57,9 +57,11 @@ onBeforeUnmount(() => {
 
 <template>
   <div :lang="locale" class="min-h-dvh">
+    <ScrollProgress />
     <Navbar />
     <main>
       <Hero />
+      <TechMarquee />
       <About />
       <Skills />
       <Experience />
@@ -72,5 +74,7 @@ onBeforeUnmount(() => {
       <Contact />
     </main>
     <Footer />
+    <ScrollToTop />
+    <div class="grain" aria-hidden="true" data-pdf-hide></div>
   </div>
 </template>

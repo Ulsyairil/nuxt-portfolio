@@ -21,28 +21,29 @@ const portfolioPdfHref = computed(() => {
         <p class="max-w-2xl text-xl leading-8">{{ copy.contact.description }}</p>
 
         <div class="mt-10 grid gap-5 sm:grid-cols-2">
-          <article class="panel panel-muted p-6" data-reveal>
+          <article v-spotlight class="spotlight panel panel-muted p-6" data-reveal>
             <p class="mono-heading font-bold">📍 {{ copy.contact.location }}</p>
             <p class="muted mt-4">{{ site.location }}</p>
           </article>
-          <article class="panel panel-muted p-6" data-reveal data-reveal-delay="80">
+          <article v-spotlight class="spotlight panel panel-muted p-6" data-reveal data-reveal-delay="80">
             <p class="mono-heading font-bold">☎ {{ copy.contact.phone }}</p>
             <a class="nav-link mt-4 inline-block font-bold underline accent-lime" :href="`tel:${site.phone}`">{{ site.phone }}</a>
           </article>
-          <article class="panel panel-muted p-6 sm:col-span-2" data-reveal data-reveal-delay="120">
+          <article v-spotlight class="spotlight panel panel-muted p-6 sm:col-span-2" data-reveal data-reveal-delay="120">
             <p class="mono-heading font-bold">✉ {{ copy.contact.email }}</p>
             <a class="nav-link mt-4 inline-block font-bold underline accent-lime" :href="`mailto:${site.email}`">{{ site.email }}</a>
           </article>
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a v-if="linkedIn" class="btn btn-primary" :href="linkedIn.href" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i>{{ copy.contact.linkedIn }}</a>
-          <a v-if="github" class="btn" :href="github.href" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i>GitHub</a>
+          <a v-if="linkedIn" class="btn btn-primary" :href="linkedIn.href" target="_blank" rel="noreferrer" v-magnet><i class="fa-brands fa-linkedin"></i>{{ copy.contact.linkedIn }}</a>
+          <a v-if="github" class="btn" :href="github.href" target="_blank" rel="noreferrer" v-magnet><i class="fa-brands fa-github"></i>GitHub</a>
           <a
             class="btn"
             :href="portfolioPdfHref"
             download
             data-pdf-hide
+            v-magnet
           >
             <i class="fa-solid fa-file-pdf"></i>{{ copy.contact.exportPdf }}
           </a>
