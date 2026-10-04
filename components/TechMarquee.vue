@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue'
 const { site } = usePortfolio()
 const isReducedMotion = ref(false)
 
-const iconClass = (icon: string) => icon.replace(/\s*colored$/i, '').trim()
+const iconClass = (icon?: string) => (icon ?? '').replace(/\s*colored$/i, '').trim()
 
 onMounted(() => {
   isReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches

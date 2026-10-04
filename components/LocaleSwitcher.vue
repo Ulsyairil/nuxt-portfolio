@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { localeOptions, type Locale } from '~/composables/useLocale'
+import { localeOptions } from '~/composables/useLocale'
 
-const { locale, setLocale, copy } = usePortfolio()
+const { locale, copy } = usePortfolio()
 </script>
 
 <template>
@@ -9,10 +9,9 @@ const { locale, setLocale, copy } = usePortfolio()
     <label class="sr-only" for="portfolio-locale">{{ copy.language.select }}</label>
     <select
       id="portfolio-locale"
-      :value="locale"
+      v-model="locale"
       class="control-select"
       :aria-label="copy.language.select"
-      @change="setLocale(($event.target as HTMLSelectElement).value as Locale)"
     >
       <option v-for="option in localeOptions" :key="option.value" :value="option.value">
         {{ option.shortLabel }}

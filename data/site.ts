@@ -35,6 +35,7 @@ export type Certificate = {
   title: string
   titleId?: string
   issuer: string
+  date?: string
   proof?: string
   image?: string
   imageAlt?: string
@@ -43,8 +44,8 @@ export type Certificate = {
 const englishSite = {
   siteTitle: "Ulsyairil's Portfolio",
   name: "Ulsyairil Oktorio Fadillah",
-  title: "Full Stack Web Developer",
-  location: "Balikpapan, Indonesia",
+  title: "Full Stack Engineer | Junior DevOps Engineer",
+  location: "Balikpapan, East Kalimantan, Indonesia",
   email: "ulsyairil@outlook.co.id",
   phone: "+62 821-9899-1068",
   links: [
@@ -59,16 +60,16 @@ const englishSite = {
       href: "https://www.linkedin.com/in/ulsyairil",
     },
   ],
+  portfolioUrl: "https://ulsyairil-portfolio.vercel.app",
   summary:
-    "Full Stack Developer with 3+ years of experience building end-to-end web applications, from intuitive frontends and robust backends to reliable deployments. Focused on Laravel, Node.js, and Vue/Nuxt to create scalable, maintainable systems that grow with business needs.",
+    "A full-stack engineer with over four years of professional experience in full-stack application development, spanning frontend technologies (Vue.js, Nuxt.js) and backend frameworks (Node.js, Express.js, Laravel, Adonis.js). Skilled in building and managing RESTful APIs, optimizing system architecture, and implementing CI/CD pipelines and Linux server configurations. Currently focused on deepening expertise in DevOps and cloud infrastructure, with foundational knowledge of Docker, Nginx, and Vercel. Adds value through an understanding of data analysis and route optimization using OSRM and Valhalla to support the development of efficient, scalable technology solutions.",
   avatar: "/images/avatar.png",
   images: {
     about: "/images/workspace.jpg",
     experience: {
-      "Infranexia by Telkom Indonesia": "/experience/experience_1.jpg",
-      "Infranexia oleh Telkom Indonesia": "/experience/experience_1.jpg",
+      "Infranexia": "/experience/experience_1.jpg",
       "CV. Digital Teknologi Persada": "/experience/experience_2.jpg",
-      "Telkom Ignite Regional 6 Kalimantan": "/experience/experience_3.jpg",
+      "PT. Telkom Indonesia / Telkom Ignite Regional 6 Kalimantan": "/experience/experience_3.jpg",
     } as Record<string, string>,
     collaboration: [
       "/images/teamwork_1.jpg", 
@@ -78,81 +79,59 @@ const englishSite = {
     contact: "/images/contact.jpg",
   },
   skills: [
-    { name: "Nuxt", icon: "devicon-nuxtjs-plain", level: "Intermediate" },
-    { name: "Vue", icon: "devicon-vuejs-plain", level: "Intermediate" },
-    {
-      name: "Tailwind CSS",
-      icon: "devicon-tailwindcss-plain",
-      level: "Amateur",
-    },
-    { name: "Node", icon: "devicon-nodejs-plain", level: "Intermediate" },
-    { name: "MySQL", icon: "devicon-mysql-plain", level: "Advanced" },
-    { name: "Docker", icon: "devicon-docker-plain", level: "Beginner" },
+    { name: "Vue.js", icon: "devicon-vuejs-plain", level: "Intermediate" },
+    { name: "Nuxt.js", icon: "devicon-nuxtjs-plain", level: "Intermediate" },
+    { name: "HTML5", icon: "devicon-html5-plain", level: "Advanced" },
+    { name: "CSS3", icon: "devicon-css3-plain", level: "Advanced" },
+    { name: "JavaScript", icon: "devicon-javascript-plain", level: "Advanced" },
+    { name: "TypeScript", icon: "devicon-typescript-plain", level: "Intermediate" },
+    { name: "Node.js", icon: "devicon-nodejs-plain", level: "Intermediate" },
+    { name: "Express.js", icon: "devicon-express-original", level: "Intermediate" },
     { name: "Laravel", icon: "devicon-laravel-plain", level: "Advanced" },
     { name: "PHP", icon: "devicon-php-plain", level: "Advanced" },
-    { name: "JavaScript", icon: "devicon-javascript-plain", level: "Advanced" },
-    {
-      name: "TypeScript",
-      icon: "devicon-typescript-plain",
-      level: "Intermediate",
-    },
-    { name: "HTML", icon: "devicon-html5-plain", level: "Advanced" },
-    { name: "CSS", icon: "devicon-css3-plain", level: "Advanced" },
-    {
-      name: "Bootstrap",
-      icon: "devicon-bootstrap-plain",
-      level: "Intermediate",
-    },
-    {
-      name: "React",
-      icon: "devicon-react-original-wordmark colored",
-      level: "Amateur",
-    },
-    {
-      name: "React Native",
-      icon: "devicon-reactnative-original-wordmark colored",
-      level: "Amateur",
-    },
+    { name: "Adonis.js", level: "Intermediate" },
+    { name: "Docker", icon: "devicon-docker-plain", level: "Intermediate" },
+    { name: "Nginx", icon: "devicon-nginx-original", level: "Beginner" },
+    { name: "CI/CD", icon: "fa-solid fa-arrows-rotate", level: "Intermediate" },
+    { name: "Git", icon: "devicon-git-plain", level: "Intermediate" },
+    { name: "MySQL", icon: "devicon-mysql-plain", level: "Advanced" },
+    { name: "PostgreSQL", icon: "devicon-postgresql-plain", level: "Intermediate" },
+    { name: "OSRM", icon: "fa-solid fa-route", level: "Intermediate" },
+    { name: "Valhalla", icon: "fa-solid fa-route", level: "Intermediate" },
   ],
   experience: [
     {
-      company: "Infranexia by Telkom Indonesia",
+      company: "Infranexia",
       location: "Balikpapan · Indonesia",
       type: "Full time",
-      period: "Jun 2025 - Dec 2026",
+      period: "2025 - Present",
       summary:
-        "Worked as a programmer, developing and maintaining multiple internal systems including field data management systems using Laravel framework. Also responsible for deploying and managing applications using Docker containers. And implementing Machine Learning solutions for data analysis and prediction ticketing system.",
+        "Digitized staff workflows and built Machine Learning-driven ticketing triage plus route optimization for field operations across Infranexia by Telkom Indonesia.",
       roles: [
         {
           title: "Programmer",
-          period: "Jun 2025 - Dec 2026",
+          period: "2025 - Present",
           description:
-            "Developed and maintained multiple internal management systems using Laravel framework. Collaborated with cross-functional teams to gather requirements, design solutions, and implement features that improved operational efficiency. Deployed and managed applications using Docker containers. Implemented Machine Learning solutions for data analysis and prediction ticketing system.",
+            "Developed the DALAPA system to digitize staff workflows, reduce manual processes, and enhance operational efficiency. Implemented machine learning models for ticket classification, built routing systems with OSRM and Valhalla, and improved system performance through code refactoring.",
           sections: [
             {
               title: "Key projects and responsibilities",
               items: [
                 {
-                  text: "DALAPA (Data Lapangan Pelanggan) Management System for Telkom TIF Regional 6 Kalimantan",
-                  sub: ["Built with Laravel 9, Bootstrap 3, jQuery, and MySQL"],
+                  text: "DALAPA system for staff workflow digitization",
+                  sub: ["Reduced manual processes and enhanced operational efficiency for Infranexia by Telkom Indonesia."],
                 },
                 {
-                  text: "Machine Learning Ticketing Prediction System and Image Classification for Telkom TIF Regional 6 Kalimantan",
-                  sub: [
-                    "Built with Node.js, TensorFlow.js, Express.js, and Docker",
-                  ],
+                  text: "Machine learning models for ticket classification",
+                  sub: ["Accelerated triage and improved assignment accuracy."],
                 },
                 {
-                  text: "Route Optimization System for field operations",
-                  sub: [
-                    "Implemented with OSRM and Valhalla to improve travel-time and operational efficiency.",
-                  ],
+                  text: "Routing systems with OSRM and Valhalla",
+                  sub: ["Optimized travel efficiency for field workers."],
                 },
                 {
-                  text: "Database Replication and Backup System using Docker for Telkom TIF Regional 6 Kalimantan",
-                  sub: [
-                    "Implemented using Docker, Bash scripting, and Cron jobs to automate database replication and backup processes, ensuring data integrity and availability.",
-                  ],
+                  text: "System performance and maintenance improvements",
+                  sub: ["Code refactoring and synchronization processes."],
                 },
               ],
             },
@@ -164,25 +143,43 @@ const englishSite = {
       company: "CV. Digital Teknologi Persada",
       location: "Tangerang · Indonesia",
       type: "Full time",
-      period: "Mar 2024 - Jun 2025",
+      period: "2024 - 2025",
       summary:
-        "Worked as a full stack web developer, developing and maintaining multiple internal systems including hospital, and clinic management systems using Laravel",
+        "Built a production-grade hospital information system with Laravel, supporting healthcare operations and incident response.",
       roles: [
         {
-          title: "Full Stack Developer (Remote)",
-          period: "Mar 2024 - Jun 2025",
-          duration: "1 yr 4 mos",
+          title: "Full Stack Developer",
+          period: "2024 - 2025",
+          duration: "1 yr",
           description:
-            "Developed and maintained multiple internal management systems using Laravel framework. Collaborated with cross-functional teams to gather requirements, design solutions, and implement features that improved operational efficiency.",
+            "Developed a web-based hospital information system for production use, managed production incidents through root cause analysis, and delivered full-stack features from development to production with zero downtime.",
           sections: [
             {
               title: "Key projects and responsibilities",
               items: [
                 {
-                  text: "Hospital and Clinic Management System at Singapore Hospital",
-                  sub: [
-                    "Built with Laravel 10, Bootstrap 4, jQuery, MySQL, and Docker.",
-                  ],
+                  text: "Hospital and Clinic Management System",
+                  sub: ["Built with Laravel 10, Bootstrap 4, jQuery, MySQL, and Docker for a Singapore hospital."],
+                },
+                {
+                  text: "Production incident management",
+                  sub: ["Root cause analysis for downtime and system overload, improving stability."],
+                },
+                {
+                  text: "Responsive user interfaces with modern JavaScript frameworks",
+                  sub: ["Enhanced overall user experience."],
+                },
+                {
+                  text: "Scalable RESTful APIs",
+                  sub: ["Seamless integration between frontend and third-party systems."],
+                },
+                {
+                  text: "Full-stack deployment management",
+                  sub: ["Zero downtime during release from development to production."],
+                },
+                {
+                  text: "Cross-functional code reviews and technical documentation",
+                  sub: ["Maintained high code quality standards."],
                 },
               ],
             },
@@ -191,36 +188,46 @@ const englishSite = {
       ],
     },
     {
-      company: "Telkom Ignite Regional 6 Kalimantan",
+      company: "PT. Telkom Indonesia / Telkom Ignite Regional 6 Kalimantan",
       location: "Balikpapan · Indonesia",
       type: "Full time",
-      period: "Oct 2020 - Dec 2023",
+      period: "2020 - 2023",
       summary:
-        "Worked as a full stack developer, developing and maintaining multiple internal systems including contract management, customer service portals, and addon management systems using PHP Native, Codeigniter 3, and Laravel frameworks.",
+        "Built SIDION, PENGKOLAN, and Virtual Plasa platforms to digitalize ancillary services, contract management, and customer-complaint workflows across Telkom Indonesia Regional 6 Kalimantan.",
       roles: [
         {
-          title: "Full Stack Developer",
-          period: "Oct 2020 - Dec 2023",
-          duration: "2 yrs 3 mos",
+          title: "Full Stack Web Developer",
+          period: "2020 - 2023",
+          duration: "3 yrs",
           description:
-            "Developed and maintained multiple internal management systems using PHP Native, Codeigniter 3 frameworks, and Laravel. Collaborated with cross-functional teams to gather requirements, design solutions, and implement features that improved operational efficiency.",
+            "Developed the SIDION, PENGKOLAN, and Virtual Plasa platforms. Contributed to performance enhancements and feature development across internal applications, delivering end-to-end features through cross-functional collaboration.",
           sections: [
             {
               title: "Key projects and responsibilities",
               items: [
                 {
-                  text: "Online Contract Management System for Telkom Indonesia Regional 6 Kalimantan",
-                  sub: ["Built with CI3, MySQL, Bootstrap 4, jQuery"],
+                  text: "SIDION - ancillary services management",
+                  sub: ["Enhanced operational efficiency and service control."],
                 },
                 {
-                  text: "Developed Virtual Plasa For CSR and Indihome Customers",
-                  sub: ["Built with PHP Native, MySQL, Bootstrap, jQuery"],
+                  text: "PENGKOLAN - centralized digital contract management",
+                  sub: ["Streamlined document tracking and monitoring processes."],
                 },
                 {
-                  text: "Developed System Digital Addon for Indihome Addon Management System",
-                  sub: [
-                    "Built with Laravel 10, Bootstrap 4, jQuery, PostgreSQL",
-                  ],
+                  text: "Virtual Plasa - customer complaint management platform",
+                  sub: ["Improved issue logging and resolution."],
+                },
+                {
+                  text: "Performance and feature development for internal applications",
+                  sub: ["Boosted overall system functionality."],
+                },
+                {
+                  text: "End-to-end feature delivery via cross-functional collaboration",
+                  sub: ["Projects completed on time and within scope."],
+                },
+                {
+                  text: "Responsive user interfaces with modern front-end frameworks",
+                  sub: ["Increased user engagement and accessibility across devices."],
                 },
               ],
             },
@@ -284,160 +291,199 @@ const englishSite = {
 
   certificates: [
     {
-      title: "Javascript Intermediate",
-      titleId: "Javascript Menengah",
-      issuer: "Hackerrank",
+      title: "JavaScript (Intermediate) Certificate",
+      titleId: "Sertifikat JavaScript (Menengah)",
+      issuer: "HackerRank",
+      date: "2023-11",
       proof: "https://www.hackerrank.com/certificates/db7803f5d587",
       image: '/certificate/hackerrank-logo.png',
     },
     {
-      title: "Javascript Basic",
-      titleId: "Javascript Dasar",
-      issuer: "Hackerrank",
+      title: "JavaScript (Basic) Certificate",
+      titleId: "Sertifikat JavaScript (Dasar)",
+      issuer: "HackerRank",
+      date: "2023-11",
       proof: "https://www.hackerrank.com/certificates/7e08f79e86b3",
       image: '/certificate/hackerrank-logo.png',
     },
     {
-      title: "Google IT Support",
+      title: "IT Support Google",
       titleId: "Dukungan TI Google",
       issuer: "Coursera",
+      date: "2023-08",
       proof: "https://coursera.org/verify/professional-cert/SUXT8JXNYL3T",
       image: '/certificate/coursera-logo.png',
+    },
+    {
+      title: "Beginner Back-End Learning with JavaScript",
+      titleId: "Belajar Back-End Pemula dengan JavaScript",
+      issuer: "Dicoding",
+      date: "2026-02",
+      proof: "https://www.dicoding.com/certificates/81P25917NPOY",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Learn Data Science Implementation with Microsoft Fabric",
+      titleId: "Belajar Penerapan Data Science dengan Microsoft Fabric",
+      issuer: "Dicoding",
+      date: "2026-02",
+      proof: "https://www.dicoding.com/certificates/MEPJ28YRLP3V",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Building Generative AI Applications with Microsoft Azure",
+      titleId: "Membangun Aplikasi Generative AI dengan Microsoft Azure",
+      issuer: "Dicoding",
+      date: "2026-02",
+      proof: "https://www.dicoding.com/certificates/JLX1V36VNZ72",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Getting Started with Python Programming",
+      titleId: "Memulai Pemrograman dengan Python",
+      issuer: "Dicoding",
+      date: "2026-02",
+      proof: "https://www.dicoding.com/certificates/07Z67RVRJPQR",
+      image: '/certificate/dicoding-logo.png',
+    },
+    {
+      title: "Learning JavaScript Programming Basics",
+      titleId: "Belajar Dasar Pemrograman JavaScript",
+      issuer: "Dicoding",
+      date: "2026-01",
+      proof: "https://www.dicoding.com/certificates/53XEK2M4VXRN",
+      image: '/certificate/dicoding-logo.png',
     },
     {
       title: "Introduction to Financial Literacy",
       titleId: "Pengenalan Literasi Keuangan",
       issuer: "Dicoding",
+      date: "2025-10",
       proof: "https://www.dicoding.com/certificates/1RXYQ3LJKZVM",
       image: '/certificate/dicoding-logo.png',
     },
     {
-      title: "Cloud Computing and Gen AI Basics on AWS",
+      title: "Learn Cloud and Gen AI Fundamentals on AWS",
       titleId: "Belajar Dasar Cloud dan Gen AI di AWS",
       issuer: "Dicoding",
+      date: "2025-10",
       proof: "https://www.dicoding.com/certificates/N9ZO2OY4RPG5",
       image: '/certificate/dicoding-logo.png',
     },
     {
-      title: "Learn JavaScript Programming Basics",
-      titleId: "Belajar Dasar Pemrograman JavaScript",
-      issuer: "Dicoding",
-      proof: "https://www.dicoding.com/certificates/53XEK2M4VXRN",
-      image: '/certificate/dicoding-logo.png',
-    },
-    {
-      title: "Back-End for Beginners with JavaScript",
-      titleId: "Belajar Back-End Pemula Dengan JavaScript",
-      issuer: "Dicoding",
-      proof: "https://www.dicoding.com/certificates/81P25917NPOY",
-      image: '/certificate/dicoding-logo.png',
-    },
-    {
-      title: "Implementing Data Science with Microsoft Fabric",
-      titleId: "Belajar Penerapan Data Science dengan Microsoft Fabric",
-      issuer: "Dicoding",
-      proof: "https://www.dicoding.com/certificates/MEPJ28YRLP3V",
-      image: '/certificate/dicoding-logo.png',
-    },
-    {
-      title: "Building Gen AI Applications with Microsoft Azure",
-      titleId: "Membangun Aplikasi Gen AI dengan Microsoft Azure",
-      issuer: "Dicoding",
-      proof: "https://www.dicoding.com/certificates/JLX1V36VNZ72",
-      image: '/certificate/dicoding-logo.png',
-    },
-    {
-      title: "Getting Started with Python",
-      titleId: "Memulai Pemrograman dengan Python",
-      issuer: "Dicoding",
-      proof: "https://www.dicoding.com/certificates/07Z67RVRJPQR",
-      image: '/certificate/dicoding-logo.png',
-    },
-    {
-      title: "Javascript Intermediate Courses",
+      title: "Javascript Intermediate Course",
       titleId: "Kursus Javascript Menengah",
       issuer: "Sololearn",
+      date: "2023-11",
       proof: "https://www.sololearn.com/en/certificates/CC-O14Q3OPC",
       image: '/certificate/sololearn-logo.png',
     },
     {
-      title: "Javascript Courses",
-      titleId: "Kursus Javascript",
+      title: "Go Course",
+      titleId: "Kursus Go",
       issuer: "Sololearn",
-      proof: "https://www.sololearn.com/en/certificates/CT-Y3RA5E3I",
-      image: '/certificate/sololearn-logo.png',
-    },
-    {
-      title: "SQL Courses",
-      titleId: "Kursus SQL",
-      issuer: "Sololearn",
-      proof: "https://www.sololearn.com/en/certificates/CT-YO0FE8F6",
-      image: '/certificate/sololearn-logo.png',
-    },
-    {
-      title: "Golang Courses",
-      titleId: "Kursus Golang",
-      issuer: "Sololearn",
+      date: "2022-05",
       proof: "https://www.sololearn.com/en/certificates/CT-JMVCABGO",
       image: '/certificate/sololearn-logo.png',
     },
     {
-      title: "React + Redux Courses",
+      title: "SQL Course",
+      titleId: "Kursus SQL",
+      issuer: "Sololearn",
+      date: "2022-05",
+      proof: "https://www.sololearn.com/en/certificates/CT-YO0FE8F6",
+      image: '/certificate/sololearn-logo.png',
+    },
+    {
+      title: "Javascript Course",
+      titleId: "Kursus Javascript",
+      issuer: "Sololearn",
+      date: "2022-04",
+      proof: "https://www.sololearn.com/en/certificates/CT-Y3RA5E3I",
+      image: '/certificate/sololearn-logo.png',
+    },
+    {
+      title: "React + Redux Course",
       titleId: "Kursus React + Redux",
       issuer: "Sololearn",
+      date: "2022-04",
       proof: "https://www.sololearn.com/en/certificates/CT-HHO8UPVI",
       image: '/certificate/sololearn-logo.png',
     },
     {
-      title: "PHP Courses",
+      title: "PHP Course",
       titleId: "Kursus PHP",
       issuer: "Sololearn",
+      date: "2022-04",
       proof: "https://www.sololearn.com/en/certificates/CT-FPR4YPA2",
       image: '/certificate/sololearn-logo.png',
     },
   ] as Certificate[],
+  education: [
+    {
+      school: "Balikpapan State of Polytechnic",
+      schoolId: "Politeknik Negeri Balikpapan",
+      degree: "Diploma III in Electronics Engineering",
+      degreeId: "Diploma III Teknik Elektronika",
+      studyProgram: "Informatics Engineering Study Program",
+      studyProgramId: "Program Studi Teknik Informatika",
+      gpa: "3.75/4.00",
+      place: "Balikpapan, East Kalimantan, Indonesia",
+      placeId: "Balikpapan, Kalimantan Timur, Indonesia",
+      period: "2016 - 2019",
+    },
+    {
+      school: "State Senior High School 2 Balikpapan",
+      schoolId: "SMA Negeri 2 Balikpapan",
+      degree: "Social science",
+      degreeId: "Ilmu Pengetahuan Sosial",
+      place: "Balikpapan, East Kalimantan, Indonesia",
+      placeId: "Balikpapan, Kalimantan Timur, Indonesia",
+      period: "2013 - 2016",
+    },
+  ],
 };
 
 const indonesianSite = {
   ...englishSite,
   siteTitle: "Portfolio Ulsyairil",
-  title: "Full Stack Web Developer",
+  title: "Full Stack Engineer | Junior DevOps Engineer",
   location: "Balikpapan, Kalimantan Timur, Indonesia",
   summary:
-    "Full Stack Developer dengan pengalaman 3+ tahun membangun aplikasi web end-to-end, dari frontend yang intuitif dan backend yang kuat hingga deployment yang andal. Berfokus pada Laravel, Node.js, dan Vue/Nuxt untuk menciptakan sistem yang scalable, mudah dipelihara, dan siap tumbuh bersama kebutuhan bisnis.",
+    "Full-stack engineer dengan pengalaman profesional lebih dari empat tahun dalam pengembangan aplikasi, mencakup teknologi frontend (Vue.js, Nuxt.js) dan framework backend (Node.js, Express.js, Laravel, Adonis.js). Memiliki keahlian dalam membangun dan mengelola RESTful API, mengoptimalkan arsitektur sistem, serta mengimplementasikan pipeline CI/CD dan konfigurasi server Linux. Saat ini berfokus memperdalam keahlian di bidang DevOps dan infrastruktur cloud, dengan pengetahuan dasar mengenai Docker, Nginx, dan Vercel. Memberikan nilai tambah melalui pemahaman tentang analisis data dan optimasi rute menggunakan OSRM serta Valhalla untuk mendukung pengembangan solusi teknologi yang efisien dan scalable.",
   experience: [
     {
-      company: "Infranexia oleh Telkom Indonesia",
+      company: "Infranexia",
       location: "Balikpapan · Indonesia",
       type: "Purnawaktu",
-      period: "Jun 2025 - Des 2026",
+      period: "2025 - Saat ini",
       summary:
-        "Memimpin inisiatif digitalisasi dan peningkatan performa sistem infrastruktur regional dengan fokus pada efisiensi operasional, otomatisasi proses, dan keandalan aplikasi jangka panjang.",
+        "Mendigitalkan alur kerja staf dan membangun triase tiket berbasis Machine Learning serta optimasi rute untuk operasional lapangan Infranexia oleh Telkom Indonesia.",
       roles: [
         {
           title: "Programmer",
-          period: "Jun 2025 - Des 2026",
+          period: "2025 - Saat ini",
           description:
-            "Mengembangkan dan memelihara berbagai sistem manajemen internal menggunakan Laravel, mengelola deployment dengan Docker, serta menerapkan solusi Machine Learning untuk analisis data dan prediksi tiket.",
+            "Mengembangkan sistem DALAPA untuk mendigitalkan alur kerja staf, mengurangi proses manual, dan meningkatkan efisiensi operasional. Mengimplementasikan model machine learning untuk klasifikasi tiket, membangun sistem perutean dengan OSRM dan Valhalla, serta meningkatkan kinerja sistem melalui refactoring.",
           sections: [
             {
               title: "Proyek dan tanggung jawab utama",
               items: [
                 {
-                  text: "DALAPA (Data Lapangan Pelanggan) untuk Infranexia oleh Telkom Indonesia",
-                  sub: ["Dibangun dengan Laravel 9, Bootstrap 3, jQuery, dan MySQL"],
+                  text: "Sistem DALAPA untuk digitalisasi alur kerja staf",
+                  sub: ["Mengurangi proses manual dan meningkatkan efisiensi operasional Infranexia oleh Telkom Indonesia."],
                 },
                 {
-                  text: "Sistem prediksi tiket dan klasifikasi gambar berbasis Machine Learning",
-                  sub: ["Dibangun dengan Node.js, TensorFlow.js, Express.js, dan Docker"],
+                  text: "Model machine learning untuk klasifikasi tiket",
+                  sub: ["Mempercepat proses triase dan meningkatkan akurasi penugasan."],
                 },
                 {
-                  text: "Sistem optimasi rute untuk operasional lapangan",
-                  sub: ["Menggunakan OSRM dan Valhalla untuk meningkatkan efisiensi waktu perjalanan dan operasional"],
+                  text: "Sistem perutean dengan OSRM dan Valhalla",
+                  sub: ["Mengoptimalkan efisiensi perjalanan bagi petugas lapangan."],
                 },
                 {
-                  text: "Replikasi dan backup basis data menggunakan Docker",
-                  sub: ["Otomatisasi menggunakan Docker, Bash, dan Cron untuk menjaga integritas serta ketersediaan data"],
+                  text: "Peningkatan kinerja dan pemeliharaan sistem",
+                  sub: ["Melalui refactoring kode dan proses sinkronisasi."],
                 },
               ],
             },
@@ -447,25 +493,45 @@ const indonesianSite = {
     },
     {
       company: "CV. Digital Teknologi Persada",
-      location: "Remote · Indonesia",
+      location: "Tangerang · Indonesia",
       type: "Purnawaktu",
-      period: "Mar 2024 - Jun 2025",
+      period: "2024 - 2025",
       summary:
-        "Mengembangkan dan memelihara sistem informasi rumah sakit serta klinik berbasis Laravel untuk lingkungan produksi.",
+        "Membangun sistem informasi rumah sakit berbasis Laravel untuk lingkungan produksi dan operasional layanan kesehatan.",
       roles: [
         {
-          title: "Full Stack Developer (Remote)",
-          period: "Mar 2024 - Jun 2025",
-          duration: "1 tahun 4 bulan",
+          title: "Full Stack Developer",
+          period: "2024 - 2025",
+          duration: "1 tahun",
           description:
-            "Merancang, mengembangkan, dan memelihara sistem manajemen internal. Berkolaborasi lintas fungsi untuk menerjemahkan kebutuhan menjadi solusi yang meningkatkan efisiensi operasional.",
+            "Mengembangkan sistem informasi rumah sakit untuk lingkungan produksi, mengelola insiden produksi, dan mengantarkan fitur full-stack dari pengembangan hingga produksi dengan zero downtime.",
           sections: [
             {
               title: "Proyek dan tanggung jawab utama",
               items: [
                 {
-                  text: "Sistem Manajemen Rumah Sakit dan Klinik di Singapura",
-                  sub: ["Dibangun dengan Laravel 10, Bootstrap 4, jQuery, MySQL, dan Docker"],
+                  text: "Sistem informasi rumah sakit berbasis web",
+                  sub: ["Mendukung operasional layanan kesehatan untuk rumah sakit di Singapura."],
+                },
+                {
+                  text: "Manajemen insiden produksi",
+                  sub: ["Analisis akar masalah untuk downtime dan kelebihan beban sistem, meningkatkan stabilitas."],
+                },
+                {
+                  text: "Kolaborasi tim untuk efisiensi rilis dan keandalan aplikasi",
+                  sub: ["Meningkatkan keandalan aplikasi."],
+                },
+                {
+                  text: "Antarmuka pengguna responsif dengan framework JavaScript modern",
+                  sub: ["Meningkatkan pengalaman pengguna secara keseluruhan."],
+                },
+                {
+                  text: "RESTful API yang skalabel",
+                  sub: ["Memfasilitasi integrasi antara front-end dan sistem pihak ketiga."],
+                },
+                {
+                  text: "Penerapan fitur full-stack dengan zero downtime",
+                  sub: ["Pengelolaan deployment dari pengembangan hingga produksi."],
                 },
               ],
             },
@@ -474,34 +540,46 @@ const indonesianSite = {
       ],
     },
     {
-      company: "Telkom Ignite Regional 6 Kalimantan",
+      company: "PT. Telkom Indonesia / Telkom Ignite Regional 6 Kalimantan",
       location: "Balikpapan · Indonesia",
       type: "Purnawaktu",
-      period: "Okt 2020 - Des 2023",
+      period: "2020 - 2023",
       summary:
-        "Mengembangkan aplikasi internal dan platform operasional untuk digitalisasi proses bisnis, percepatan penanganan layanan, dan peningkatan keandalan sistem.",
+        "Membangun platform SIDION, PENGKOLAN, dan Virtual Plasa untuk digitalisasi layanan tambahan, manajemen kontrak, dan pengelolaan keluhan pelanggan di Telkom Indonesia Regional 6 Kalimantan.",
       roles: [
         {
           title: "Full Stack Web Developer",
-          period: "Okt 2020 - Des 2023",
-          duration: "3 tahun 3 bulan",
+          period: "2020 - 2023",
+          duration: "3 tahun",
           description:
-            "Mengembangkan dan memelihara sistem menggunakan PHP Native, CodeIgniter 3, dan Laravel serta berkolaborasi lintas fungsi dalam perancangan dan implementasi fitur.",
+            "Mengembangkan platform SIDION, PENGKOLAN, dan Virtual Plasa. Berkontribusi pada peningkatan kinerja dan fitur di berbagai aplikasi internal, serta menghadirkan fitur end-to-end melalui kolaborasi lintas fungsi.",
           sections: [
             {
               title: "Proyek dan tanggung jawab utama",
               items: [
                 {
-                  text: "PENGKOLAN - sistem manajemen kontrak online untuk Telkom Regional 6 Kalimantan",
-                  sub: ["Dibangun dengan CodeIgniter 3, MySQL, Bootstrap 4, dan jQuery"],
+                  text: "SIDION - pengelolaan layanan tambahan",
+                  sub: ["Meningkatkan efisiensi operasional dan kendali layanan."],
                 },
                 {
-                  text: "Virtual Plasa untuk CSR dan pelanggan IndiHome",
-                  sub: ["Dibangun dengan PHP Native, MySQL, Bootstrap, dan jQuery"],
+                  text: "PENGKOLAN - manajemen kontrak digital terpusat",
+                  sub: ["Menyederhanakan pelacakan dan pemantauan dokumen."],
                 },
                 {
-                  text: "SIDION - sistem manajemen layanan add-on IndiHome",
-                  sub: ["Dibangun dengan Laravel 10, Bootstrap 4, jQuery, dan PostgreSQL"],
+                  text: "Virtual Plasa - platform pengelolaan keluhan pelanggan",
+                  sub: ["Memperbaiki pencatatan dan penyelesaian masalah."],
+                },
+                {
+                  text: "Peningkatan kinerja dan pengembangan fitur aplikasi internal",
+                  sub: ["Meningkatkan fungsionalitas sistem secara keseluruhan."],
+                },
+                {
+                  text: "Penghadiran fitur end-to-end melalui kolaborasi lintas fungsi",
+                  sub: ["Proyek selesai tepat waktu dan sesuai ruang lingkup."],
+                },
+                {
+                  text: "Antarmuka pengguna responsif dengan framework front-end modern",
+                  sub: ["Meningkatkan keterlibatan pengguna dan aksesibilitas di berbagai perangkat."],
                 },
               ],
             },
@@ -554,6 +632,13 @@ export const getSite = (locale: 'en' | 'id') => {
       certificates: base.certificates.map(certificate => ({
         ...certificate,
         title: certificate.titleId ?? certificate.title,
+      })),
+      education: base.education.map(entry => ({
+        ...entry,
+        degree: entry.degreeId ?? entry.degree,
+        school: entry.schoolId ?? entry.school,
+        studyProgram: entry.studyProgramId ?? entry.studyProgram,
+        place: entry.placeId ?? entry.place,
       })),
     }
   }

@@ -38,15 +38,6 @@ const portfolioPdfHref = computed(() => {
         <div class="mt-8 flex flex-wrap gap-3">
           <a v-if="linkedIn" class="btn btn-primary" :href="linkedIn.href" target="_blank" rel="noreferrer" v-magnet><i class="fa-brands fa-linkedin"></i>{{ copy.contact.linkedIn }}</a>
           <a v-if="github" class="btn" :href="github.href" target="_blank" rel="noreferrer" v-magnet><i class="fa-brands fa-github"></i>GitHub</a>
-          <a
-            class="btn"
-            :href="portfolioPdfHref"
-            download
-            data-pdf-hide
-            v-magnet
-          >
-            <i class="fa-solid fa-file-pdf"></i>{{ copy.contact.exportPdf }}
-          </a>
         </div>
       </div>
 

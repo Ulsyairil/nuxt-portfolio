@@ -123,7 +123,7 @@ const platforms = computed(() =>
             >
               <div class="min-w-0">
                 <p class="font-bold leading-6">{{ certificate.title }}</p>
-                <p class="mt-1 text-sm" :class="platform.featured ? 'text-black/65' : 'muted'">{{ certificate.issuer }}</p>
+                <p class="mt-1 text-sm" :class="platform.featured ? 'text-black/65' : 'muted'">{{ certificate.issuer }}<span v-if="certificate.date"> · {{ certificate.date }}</span></p>
               </div>
 
               <a

@@ -102,8 +102,10 @@ onBeforeUnmount(() => {
           v-for="(item, index) in nav"
           :key="item.href"
           :href="item.href"
-          class="nav-link flex min-h-12 items-center justify-between gap-4 border-b py-3 text-sm font-bold sm:px-3"
-          :class="{ 'accent-lime': item.href === '#resume' || active === item.href }"
+          class="nav-link flex min-h-12 items-center justify-between gap-4 border-b py-3 px-3 text-sm font-bold transition"
+          :class="{
+            'mobile-active': active === item.href,
+          }"
           style="border-color: rgb(var(--line) / .12)"
           @click="mobileOpen = false"
         >
@@ -118,5 +120,9 @@ onBeforeUnmount(() => {
 <style scoped>
 .active-link {
   color: rgb(var(--lime));
+}
+.mobile-active {
+  color: rgb(var(--lime));
+  background: rgb(var(--lime) / 0.08);
 }
 </style>
