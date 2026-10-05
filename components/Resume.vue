@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const { locale, copy } = usePortfolio()
-const resumeHref = computed(() => `/resume/ulsyairil-oktorio-fadillah-resume-${locale.value}.pdf`)
-const downloadName = computed(() => `ulsyairil-oktorio-fadillah-resume-${locale.value}.pdf`)
+const { locale, site, copy } = usePortfolio()
+const resumeHref = computed(() => site.value.resumeUrl)
 </script>
 
 <template>
@@ -19,7 +18,7 @@ const downloadName = computed(() => `ulsyairil-oktorio-fadillah-resume-${locale.
             <a class="btn btn-primary" :href="resumeHref" target="_blank" rel="noreferrer">
               <i class="fa-regular fa-file-lines"></i>{{ copy.resume.view }}
             </a>
-            <a class="btn" :href="resumeHref" :download="downloadName">
+            <a class="btn" :href="resumeHref" target="_blank" rel="noreferrer">
               <i class="fa-solid fa-download"></i>{{ copy.resume.download }}
             </a>
           </div>

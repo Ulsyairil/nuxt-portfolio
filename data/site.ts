@@ -61,6 +61,7 @@ const englishSite = {
     },
   ],
   portfolioUrl: "https://ulsyairil-portfolio.vercel.app",
+  resumeUrl: "https://drive.google.com/file/d/1_bTyeS8sa9rBvDJM4-QkvfpBT2DeiI4B/view?usp=sharing",
   summary:
     "A full-stack engineer with over four years of professional experience in full-stack application development, spanning frontend technologies (Vue.js, Nuxt.js) and backend frameworks (Node.js, Express.js, Laravel, Adonis.js). Skilled in building and managing RESTful APIs, optimizing system architecture, and implementing CI/CD pipelines and Linux server configurations. Currently focused on deepening expertise in DevOps and cloud infrastructure, with foundational knowledge of Docker, Nginx, and Vercel. Adds value through an understanding of data analysis and route optimization using OSRM and Valhalla to support the development of efficient, scalable technology solutions.",
   avatar: "/images/avatar.png",
@@ -449,6 +450,7 @@ const indonesianSite = {
   siteTitle: "Portfolio Ulsyairil",
   title: "Full Stack Engineer | Junior DevOps Engineer",
   location: "Balikpapan, Kalimantan Timur, Indonesia",
+  resumeUrl: "https://drive.google.com/file/d/1PvLeO2DYBGskpKoCuB-cVUVfSbQSZkPR/view?usp=sharing",
   summary:
     "Full-stack engineer dengan pengalaman profesional lebih dari empat tahun dalam pengembangan aplikasi, mencakup teknologi frontend (Vue.js, Nuxt.js) dan framework backend (Node.js, Express.js, Laravel, Adonis.js). Memiliki keahlian dalam membangun dan mengelola RESTful API, mengoptimalkan arsitektur sistem, serta mengimplementasikan pipeline CI/CD dan konfigurasi server Linux. Saat ini berfokus memperdalam keahlian di bidang DevOps dan infrastruktur cloud, dengan pengetahuan dasar mengenai Docker, Nginx, dan Vercel. Memberikan nilai tambah melalui pemahaman tentang analisis data dan optimasi rute menggunakan OSRM serta Valhalla untuk mendukung pengembangan solusi teknologi yang efisien dan scalable.",
   experience: [

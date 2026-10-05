@@ -6,7 +6,7 @@ const { locale, site, copy } = usePortfolio()
 const route = useRoute()
 const linkedIn = computed(() => site.value.links.find(link => link.label === 'LinkedIn'))
 const github = computed(() => site.value.links.find(link => link.label === 'GitHub'))
-const resumeHref = computed(() => `/resume/ulsyairil-oktorio-fadillah-resume-${locale.value}.pdf`)
+const resumeHref = computed(() => site.value.resumeUrl)
 const isPdfExport = computed(() => route.query['portfolio-pdf'] === '1')
 const isReducedMotion = ref(false)
 
